@@ -4,12 +4,6 @@
     <EnableDynamicLoading>true</EnableDynamicLoading>
   </PropertyGroup>
   <ItemGroup>
-    <Folder Include="scripts\Adapters\" />
-    <Folder Include="scripts\decorators\" />
-    <Folder Include="scripts\entity\bullet\" />
     <Folder Include="scripts\entity\enemy\" />
-    <Folder Include="scripts\entity\player\" />
-    <Folder Include="scripts\factories\" />
-    <Folder Include="scripts\strategies\" />
   </ItemGroup>
 </Project>
