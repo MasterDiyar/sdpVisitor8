@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=3 uid="uid://mnbr5r2dtsqx"]
+
+[ext_resource type="Script" uid="uid://cl8gbs4sevo3s" path="res://scripts/observers/Menu.cs" id="1_yqeox"]
+
+[node name="menu" type="Node2D" node_paths=PackedStringArray("_playButton")]
+script = ExtResource("1_yqeox")
+_playButton = NodePath("Button")
+
+[node name="Button" type="Button" parent="."]
+offset_left = 227.601
+offset_top = 232.2
+offset_right = 235.601
+offset_bottom = 240.2
+text = "Play"
