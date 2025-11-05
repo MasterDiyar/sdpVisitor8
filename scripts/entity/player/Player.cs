@@ -1,6 +1,9 @@
 namespace finalSDP.scripts.entity.player;
+using Godot;
 
-public class Player
+
+public partial class Player : CharacterBody2D
 {
+    
     
 }
