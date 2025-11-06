@@ -12,8 +12,13 @@ config_version=5
 
 config/name="finalSDP"
 run/main_scene="uid://dd7qfk8sw6gfn"
-config/features=PackedStringArray("4.5", "C#", "Forward Plus")
+config/features=PackedStringArray("4.4", "C#", "Forward Plus")
 config/icon="res://icon.svg"
+
+[display]
+
+window/size/viewport_width=1920
+window/size/viewport_height=1080
 
 [dotnet]
 

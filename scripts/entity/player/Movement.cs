@@ -18,6 +18,9 @@ public partial class Movement : Node2D
 
     public override void _PhysicsProcess(double delta)
     {
+        if (Input.IsActionJustPressed("q"))
+            parent.Attack(0);
+        
         var velocity = parent.Velocity;
         var direction  = Input.GetActionStrength("d") - Input.GetActionStrength("a");
 

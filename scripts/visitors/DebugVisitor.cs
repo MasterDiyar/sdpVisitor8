@@ -16,6 +16,6 @@ public class DebugVisitor : IVisitor
 
     public void Visit(Entity entity)
     {
-        GD.Print(entity.GetName(),"has: ", entity.Hp);
+        GD.Print(entity.GetName()," has: ", entity.Hp, " in position: ", entity.Position);
     }
 }

@@ -1,3 +1,4 @@
+using finalSDP.scripts.entity.bullet;
 using finalSDP.scripts.entity.player;
 using Godot;
 
@@ -18,9 +19,17 @@ public partial class Weapon : Node2D
         Player.OnAttack += Attack;
     }
 
-    protected void Attack(float angle)
+    protected void Attack(float angle = 0)
     {
-        
+        var bullet = bulletScene.Instantiate<Bullet>();
+        bullet.Angle = new Vector2(Mathf.Cos(angle), Mathf.Sin(angle));
+        bullet.Position = GlobalPosition;
+        SpawnWay(bullet);
+    }
+
+    protected virtual void SpawnWay(Node node)
+    {
+        GetTree().Root.AddChild(node);
     }
     
     

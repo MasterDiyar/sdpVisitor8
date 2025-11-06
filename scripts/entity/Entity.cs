@@ -5,7 +5,7 @@ namespace finalSDP.scripts.entity;
 using Godot;
 using System;
 
-public partial class Entity : CharacterBody2D
+public partial class Entity : CharacterBody2D, IEntity
 {
     public virtual float MaxHp {get; set;}
     public float Hp {get; set;}
@@ -16,7 +16,13 @@ public partial class Entity : CharacterBody2D
 
     public Action<float> OnHurt;
     public Action<float> OnAttack;
-    
+
+    public override void _Ready()
+    {
+        Hp = MaxHp;
+        Stamina = MaxStamina;
+        
+    }
     
     
     public virtual void Visit(IVisitor visitor) => visitor.Visit(this);

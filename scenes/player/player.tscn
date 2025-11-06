@@ -1,12 +1,13 @@
-[gd_scene load_steps=6 format=3 uid="uid://tvtqy2nte426"]
+[gd_scene load_steps=7 format=3 uid="uid://tvtqy2nte426"]
 
 [ext_resource type="PackedScene" uid="uid://cdp1h5qeh27ma" path="res://scenes/player/player_animation.tscn" id="1_dovo2"]
 [ext_resource type="Script" uid="uid://b6n6pxmin0ry5" path="res://scripts/entity/player/Player.cs" id="1_gmlin"]
 [ext_resource type="PackedScene" uid="uid://dvlxb4dmg4x7b" path="res://scenes/player/dust.tscn" id="2_gmlin"]
 [ext_resource type="PackedScene" uid="uid://is4lhrvij5u" path="res://scenes/player/movement.tscn" id="4_lvxji"]
+[ext_resource type="PackedScene" uid="uid://devom57hmxpdg" path="res://scenes/weapon/spray.tscn" id="5_p47bc"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_gmlin"]
-radius = 33.01515
+radius = 33.0151
 
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_gmlin")
@@ -14,7 +15,7 @@ script = ExtResource("1_gmlin")
 [node name="AnimatedSprite2D" parent="." node_paths=PackedStringArray("particles2D") instance=ExtResource("1_dovo2")]
 animation = &"run"
 frame = 0
-frame_progress = 0.58860517
+frame_progress = 0.588605
 particles2D = NodePath("../dust")
 
 [node name="dust" parent="." instance=ExtResource("2_gmlin")]
@@ -24,3 +25,8 @@ position = Vector2(0, 28)
 shape = SubResource("CircleShape2D_gmlin")
 
 [node name="Movement" parent="." instance=ExtResource("4_lvxji")]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(1.7, 1.7)
+
+[node name="Spray" parent="." instance=ExtResource("5_p47bc")]

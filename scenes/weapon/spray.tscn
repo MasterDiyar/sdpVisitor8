@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=3 uid="uid://devom57hmxpdg"]
+
+[ext_resource type="Script" uid="uid://cy2kvreukgquv" path="res://scripts/weapon/Spray.cs" id="1_ic7mv"]
+[ext_resource type="PackedScene" uid="uid://c40s2qvpi0hn" path="res://scenes/bullets/poisonous.tscn" id="2_dbt1m"]
+
+[node name="Spray" type="Node2D"]
+script = ExtResource("1_ic7mv")
+bulletScene = ExtResource("2_dbt1m")
