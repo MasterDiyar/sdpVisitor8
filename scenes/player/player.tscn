@@ -11,12 +11,14 @@ radius = 33.01515
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_gmlin")
 
-[node name="AnimatedSprite2D" parent="." instance=ExtResource("1_dovo2")]
+[node name="AnimatedSprite2D" parent="." node_paths=PackedStringArray("particles2D") instance=ExtResource("1_dovo2")]
 animation = &"run"
-frame_progress = 0.5519076
+frame = 0
+frame_progress = 0.58860517
+particles2D = NodePath("../dust")
 
 [node name="dust" parent="." instance=ExtResource("2_gmlin")]
-position = Vector2(0, 33)
+position = Vector2(0, 28)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_gmlin")

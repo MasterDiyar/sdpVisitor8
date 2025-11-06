@@ -3,21 +3,25 @@
 [ext_resource type="Texture2D" uid="uid://diaeo7bjanh7r" path="res://assets/player/walk_dust.png" id="1_ks4uv"]
 
 [sub_resource type="Curve" id="Curve_q0nmu"]
-_limits = [0.0, 1.0, 0.12209305, 2.0]
-_data = [Vector2(0.12209305, 0.10112369), 0.0, 0.0, 0, 0, Vector2(2, 1), -1.337852, 0.0, 0, 0]
+_limits = [0.0, 3.0, 0.0, 2.0]
+_data = [Vector2(0, 0.7415731), 0.0, 2.924857, 0, 0, Vector2(1.845491, 3), -4.052144, 0.0, 0, 0]
 point_count = 2
 
 [sub_resource type="Gradient" id="Gradient_ysfol"]
-colors = PackedColorArray(1, 1, 1, 1, 0.84313726, 0.84313726, 0.84313726, 0.14901961)
+colors = PackedColorArray(1, 1, 1, 1, 0.84313726, 0.84313726, 0.84313726, 0)
 
 [node name="dust" type="CPUParticles2D"]
 texture_filter = 3
 texture = ExtResource("1_ks4uv")
-lifetime = 3.0
+lifetime = 2.0
 explosiveness = 0.1
 randomness = 1.0
+lifetime_randomness = 0.7
+emission_shape = 1
+emission_sphere_radius = 5.0
 gravity = Vector2(0, 0)
 angular_velocity_min = -20.0
 angular_velocity_max = 20.0
+linear_accel_max = 5.0
 scale_amount_curve = SubResource("Curve_q0nmu")
 color_ramp = SubResource("Gradient_ysfol")

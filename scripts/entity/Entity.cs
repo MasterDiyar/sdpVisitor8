@@ -5,7 +5,7 @@ namespace finalSDP.scripts.entity;
 using Godot;
 using System;
 
-public partial class Entity : Node2D
+public partial class Entity : CharacterBody2D
 {
     public virtual float MaxHp {get; set;}
     public float Hp {get; set;}
@@ -17,6 +17,8 @@ public partial class Entity : Node2D
     public Action<float> OnHurt;
     public Action<float> OnAttack;
     
+    
+    
     public virtual void Visit(IVisitor visitor) => visitor.Visit(this);
     
     public virtual void TakeDamage(float damage)
@@ -25,10 +27,10 @@ public partial class Entity : Node2D
         OnHurt?.Invoke(damage);
     }
 
-    public virtual void Attack()
+    public virtual void Attack(float angle)
     {
         
-        OnAttack?.Invoke(0);
+        OnAttack?.Invoke(angle);
     }
     
 }

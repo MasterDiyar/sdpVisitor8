@@ -6,7 +6,7 @@ public partial class Movement : Node2D
 {
     private float MaxSpeed = 300;
     private float Speed = 200;
-    private float JumpForce = -300;
+    private float JumpForce = -1000;
     private float Gravity = 980f;
 
     private Player parent;
