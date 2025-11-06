@@ -6,7 +6,7 @@ namespace finalSDP.scripts.weapon;
 
 public partial class Weapon : Node2D
 {
-    [Export] PackedScene bulletScene;
+    [Export] protected PackedScene bulletScene;
 
     private Player Player;
 
@@ -19,7 +19,7 @@ public partial class Weapon : Node2D
         Player.OnAttack += Attack;
     }
 
-    protected void Attack(float angle = 0)
+    protected virtual void Attack(float angle = 0)
     {
         var bullet = bulletScene.Instantiate<Bullet>();
         bullet.Angle = new Vector2(Mathf.Cos(angle), Mathf.Sin(angle));
