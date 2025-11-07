@@ -5,12 +5,9 @@ using finalSDP.scripts.weapon;
 
 public partial class Spray : Weapon
 {
-    protected override void Attack(float angle = 0)
+    protected override void SpawnWay(Bullet node)
     {
-        var bullet = bulletScene.Instantiate<Bullet>();
-        bullet.Angle = new Vector2(Mathf.Cos(angle), Mathf.Sin(angle));
-        bullet.Position = GlobalPosition;
-        bullet.Gravity = 0;
-        SpawnWay(bullet);
+        node.Gravity = 0;
+        base.SpawnWay(node);
     }
 }

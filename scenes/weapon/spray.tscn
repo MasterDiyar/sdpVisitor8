@@ -6,3 +6,5 @@
 [node name="Spray" type="Node2D"]
 script = ExtResource("1_ic7mv")
 bulletScene = ExtResource("2_dbt1m")
+
+[node name="Timer" type="Timer" parent="."]
