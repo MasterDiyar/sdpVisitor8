@@ -1,8 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://biwhv35oavbo0"]
+[gd_scene load_steps=9 format=3 uid="uid://biwhv35oavbo0"]
 
 [ext_resource type="Script" uid="uid://cmb778wg8csu0" path="res://scripts/weapon/Bow.cs" id="1_bmf6d"]
 [ext_resource type="Texture2D" uid="uid://d0baakh85ji2o" path="res://assets/player/attack/bow1.png" id="1_ww56p"]
 [ext_resource type="Texture2D" uid="uid://c0bd223u6mbxv" path="res://assets/player/attack/bow2.png" id="2_bmf6d"]
+[ext_resource type="PackedScene" uid="uid://bwac0odmndlrh" path="res://scenes/bullets/arrow.tscn" id="2_cbthd"]
 [ext_resource type="Texture2D" uid="uid://36o12p4j3iog" path="res://assets/player/attack/bow3.png" id="3_cbthd"]
 [ext_resource type="Texture2D" uid="uid://dubja63bl28yf" path="res://assets/player/attack/bow4.png" id="4_slp7k"]
 [ext_resource type="Texture2D" uid="uid://blq3863vpj6wt" path="res://assets/player/attack/bow5.png" id="5_wuykh"]
@@ -33,6 +34,7 @@ animations = [{
 [node name="bow" type="Node2D"]
 texture_filter = 3
 script = ExtResource("1_bmf6d")
+bulletScene = ExtResource("2_cbthd")
 
 [node name="Timer" type="Timer" parent="."]
 

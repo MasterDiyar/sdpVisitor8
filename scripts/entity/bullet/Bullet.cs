@@ -15,6 +15,7 @@ public partial class Bullet : Area2D, IBullet
         timer = GetNode<Timer>("Timer");
         timer.Start();
         timer.Timeout += OnTimeout;
+        BodyEntered   += OnBodyHit;
     }
 
     public override void _Process(double delta)

@@ -1,3 +1,4 @@
+using finalSDP.scripts.entity.player;
 using Godot;
 
 namespace finalSDP.scripts.entity.bullet;
@@ -10,5 +11,13 @@ public partial class Arrow : Bullet
         Gravity = 18;
         GetNode<Sprite2D>("Arrow").Rotation = Angle.Angle();
         base._Ready();
+    }
+
+    public override void OnBodyHit(Node body)
+    {
+        if (body is not Player && body is Entity entity)
+        {
+            entity.TakeDamage(Damage);
+        }
     }
 }
