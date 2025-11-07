@@ -1,0 +1,42 @@
+[gd_scene load_steps=8 format=3 uid="uid://biwhv35oavbo0"]
+
+[ext_resource type="Script" uid="uid://cmb778wg8csu0" path="res://scripts/weapon/Bow.cs" id="1_bmf6d"]
+[ext_resource type="Texture2D" uid="uid://d0baakh85ji2o" path="res://assets/player/attack/bow1.png" id="1_ww56p"]
+[ext_resource type="Texture2D" uid="uid://c0bd223u6mbxv" path="res://assets/player/attack/bow2.png" id="2_bmf6d"]
+[ext_resource type="Texture2D" uid="uid://36o12p4j3iog" path="res://assets/player/attack/bow3.png" id="3_cbthd"]
+[ext_resource type="Texture2D" uid="uid://dubja63bl28yf" path="res://assets/player/attack/bow4.png" id="4_slp7k"]
+[ext_resource type="Texture2D" uid="uid://blq3863vpj6wt" path="res://assets/player/attack/bow5.png" id="5_wuykh"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_or01h"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_ww56p")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_bmf6d")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_cbthd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_slp7k")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_wuykh")
+}],
+"loop": false,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="bow" type="Node2D"]
+texture_filter = 3
+script = ExtResource("1_bmf6d")
+
+[node name="Timer" type="Timer" parent="."]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_or01h")
+frame = 4
+frame_progress = 1.0
