@@ -1,3 +1,4 @@
+using finalSDP.scripts.entity;
 using finalSDP.scripts.entity.bullet;
 using finalSDP.scripts.entity.player;
 using Godot;
@@ -8,7 +9,7 @@ public partial class Weapon : Node2D
 {
     [Export] protected PackedScene bulletScene;
 
-    private Player Player;
+    private Entity Player;
     protected Timer timer;
 
     public virtual float Damage { get; set; } = 10;
@@ -19,7 +20,7 @@ public partial class Weapon : Node2D
         timer = GetNode<Timer>("Timer");
         timer.Start();
         timer.Timeout += () => { timer.Stop();};
-        Player = GetParent<Player>();
+        Player = GetParent<Entity>();
         Player.OnAttack += Attack;
     }
 

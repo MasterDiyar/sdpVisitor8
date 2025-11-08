@@ -16,6 +16,8 @@ public partial class Entity : CharacterBody2D, IEntity
 
     public Action<float> OnHurt;
     public Action<float> OnAttack;
+    
+    public float Direction = 0;
 
     public override void _Ready()
     {

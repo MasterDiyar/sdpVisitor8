@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://dxlrug2lqyvuk"]
+
+[ext_resource type="Script" uid="uid://c8epcrbcsxud0" path="res://scripts/weapon/Inidat.cs" id="1_lls06"]
+[ext_resource type="PackedScene" uid="uid://u3pw6q8lmuw" path="res://scenes/bullets/whatisdad.tscn" id="2_uxit3"]
+
+[node name="inidat" type="Node2D"]
+script = ExtResource("1_lls06")
+bulletScene = ExtResource("2_uxit3")
+
+[node name="Timer" type="Timer" parent="."]

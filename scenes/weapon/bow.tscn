@@ -42,3 +42,4 @@ bulletScene = ExtResource("2_cbthd")
 sprite_frames = SubResource("SpriteFrames_or01h")
 frame = 4
 frame_progress = 1.0
+offset = Vector2(8, 0)

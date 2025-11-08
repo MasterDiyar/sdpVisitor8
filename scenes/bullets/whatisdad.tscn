@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://u3pw6q8lmuw"]
+
+[ext_resource type="Script" uid="uid://drgyk8g8fpjjs" path="res://scripts/entity/bullet/Whatisdad.cs" id="1_66ubh"]
+[ext_resource type="Texture2D" uid="uid://yq5xc5n1ksiy" path="res://assets/bullets/che.png" id="1_fgdn4"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_66ubh"]
+
+[node name="what" type="Area2D"]
+texture_filter = 3
+script = ExtResource("1_66ubh")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_66ubh")
+
+[node name="Che" type="Sprite2D" parent="."]
+texture = ExtResource("1_fgdn4")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 3.0
