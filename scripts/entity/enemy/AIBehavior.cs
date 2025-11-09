@@ -1,4 +1,5 @@
 using finalSDP.scripts.entity.player;
+using finalSDP.scripts.weapon;
 using Godot;
 
 namespace finalSDP.scripts.entity.enemy;
@@ -6,12 +7,14 @@ namespace finalSDP.scripts.entity.enemy;
 public partial class AIBehavior : Node2D
 {
     [Export] Timer timer;
+    [Export] private PackedScene weaponscene1, weaponscene2;
+    private Weapon currentWep;
     private RandomNumberGenerator rng = new RandomNumberGenerator();
     private Player player;
     private Entity entity;
     private float detectorRadius = 200f;
+    private double lastEquipTime = -10;
     private AnimatedSprite2D sprite;
-    public Bolvanchik Body { get; set; }
     
     public enum WhatNow
     {
@@ -20,7 +23,8 @@ public partial class AIBehavior : Node2D
         RunRight,
         RunToPlayer,
         Attack1,
-        Attack2
+        Attack2,
+        IdleAttack
     }
 
     private WhatNow Behavior  = WhatNow.Idle;
@@ -53,7 +57,14 @@ public partial class AIBehavior : Node2D
                 Attack1(delta); break;
             case WhatNow.Attack2:
                 Attack2(delta); break;
+            case WhatNow.IdleAttack:
+                AttackIdle(delta);break;        
         }
+    }
+
+    protected virtual void AttackIdle(double delta)
+    {
+        sprite.Play("attack");
     }
     
     protected virtual void Idle(double delta)
@@ -93,16 +104,14 @@ public partial class AIBehavior : Node2D
 
     protected virtual void Attack1(double delta)
     {
-        entity.Attack(0f);
-        Idle(delta);
         sprite.Play("attack");
+        entity.Attack(0f);
     }
 
     protected virtual void Attack2(double delta)
     {
-        entity.Attack(45f);
-        Idle(delta);
         sprite.Play("attack");
+        entity.Attack(45f);
     }
 
     protected virtual void MoveEntity(double delta)
@@ -115,6 +124,16 @@ public partial class AIBehavior : Node2D
     {
         Behavior = (WhatNow)rng.RandiRange(0, 5);
         GD.Print(Behavior);
+        
+        if (Behavior == WhatNow.Attack1) {Equip(weaponscene1);}
+        else if (Behavior == WhatNow.Attack2) {Equip(weaponscene2);}
+    }
+
+    protected virtual void Equip(PackedScene scene)
+    {
+        currentWep?.QueueFree();
+        currentWep = scene.Instantiate<Weapon>();
+        entity.AddChild(currentWep);
     }
 
 }

@@ -9,7 +9,7 @@ public partial class Weapon : Node2D
 {
     [Export] protected PackedScene bulletScene;
 
-    private Entity Player;
+    protected Entity Player;
     protected Timer timer;
 
     public virtual float Damage { get; set; } = 10;
@@ -26,6 +26,7 @@ public partial class Weapon : Node2D
 
     protected virtual bool TimerCheck()
     {
+        timer ??= GetNode<Timer>("Timer");
         if (!timer.IsStopped()) return false;
         timer.Start();
         return true;
@@ -51,7 +52,11 @@ public partial class Weapon : Node2D
         SpawnWay(bullet);
     }
 
-    
+    public override void _ExitTree()
+    {
+        if (Player != null)
+            Player.OnAttack -= Attack;
+    }
     
     
 }

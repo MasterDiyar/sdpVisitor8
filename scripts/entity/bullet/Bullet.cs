@@ -5,7 +5,7 @@ public partial class Bullet : Area2D, IBullet
 {
     public Vector2 Angle = Vector2.Zero, Velocity;
     public float Speed = 3f;
-    public float Damage = 20f;
+    [Export]public float Damage = 20f;
     public float Gravity = 9f;
 
     protected Timer timer;

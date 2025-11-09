@@ -1,0 +1,53 @@
+[gd_scene load_steps=10 format=3 uid="uid://danc4rbi660kt"]
+
+[ext_resource type="Script" uid="uid://bl61fkbt06rms" path="res://scripts/entity/bullet/CatanaSwing.cs" id="1_am6x1"]
+[ext_resource type="Texture2D" uid="uid://di8r6fse4ps6b" path="res://assets/bullets/catanaswing1.png" id="1_gvoi3"]
+[ext_resource type="Texture2D" uid="uid://cnrx1alq1pkm5" path="res://assets/bullets/catanaswing2.png" id="2_am6x1"]
+[ext_resource type="Texture2D" uid="uid://d22i4eoatu0uk" path="res://assets/bullets/catanaswing3.png" id="3_3s81d"]
+[ext_resource type="Texture2D" uid="uid://738nbjj0sxhd" path="res://assets/bullets/catanaswing4.png" id="4_qswc0"]
+[ext_resource type="Texture2D" uid="uid://dhebknujspsa3" path="res://assets/bullets/catanaswing5.png" id="5_2blqc"]
+[ext_resource type="Texture2D" uid="uid://dnsejj1jidrqo" path="res://assets/bullets/catanaswing6.png" id="6_f8x8y"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_jmxrl"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_gvoi3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_am6x1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_3s81d")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_qswc0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_2blqc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_f8x8y")
+}],
+"loop": false,
+"name": &"default",
+"speed": 12.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_gkrpv"]
+
+[node name="CatanaSwing" type="Area2D"]
+script = ExtResource("1_am6x1")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 3
+scale = Vector2(2, 2)
+skew = 0.628319
+sprite_frames = SubResource("SpriteFrames_jmxrl")
+frame = 5
+frame_progress = 1.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_gkrpv")
+
+[node name="Timer" type="Timer" parent="."]

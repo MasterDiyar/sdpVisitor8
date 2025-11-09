@@ -4,8 +4,13 @@ using finalSDP.scripts.weapon;
 
 public partial class Inidat : Weapon
 {
-	
-	
+	public override void _Ready()
+	{
+		base._Ready();
+		timer ??= GetChild<Timer>(0);
+		bulletScene ??= GD.Load<PackedScene>("res://scenes/bullets/whatisdad.tscn");
+	}
+
 	protected override void Attack(float angle = 0)
 	{
 		if (!TimerCheck()) return;

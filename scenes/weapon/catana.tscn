@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=3 uid="uid://chdsxak3lc7hs"]
+
+[ext_resource type="Script" uid="uid://oifhitdoggpm" path="res://scripts/weapon/Catana.cs" id="1_r6j8c"]
+[ext_resource type="Texture2D" uid="uid://cyn2xy8mibkh0" path="res://assets/bullets/catana.png" id="1_vcim6"]
+[ext_resource type="PackedScene" uid="uid://danc4rbi660kt" path="res://scenes/bullets/catana_swing.tscn" id="2_sevy0"]
+
+[node name="catana" type="Node2D"]
+script = ExtResource("1_r6j8c")
+bulletScene = ExtResource("2_sevy0")
+
+[node name="Catana" type="Sprite2D" parent="."]
+texture_filter = 3
+texture = ExtResource("1_vcim6")
+offset = Vector2(40, -40)
+
+[node name="Timer" type="Timer" parent="."]

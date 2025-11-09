@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://blbxeun3jut0y"]
+
+[ext_resource type="Script" uid="uid://dncm6xvhv4uj3" path="res://scripts/weapon/Invihammer.cs" id="1_m7agf"]
+[ext_resource type="PackedScene" uid="uid://thp8l1wpq8l5" path="res://scenes/bullets/earthblow.tscn" id="2_xir2u"]
+
+[node name="invihammer" type="Node2D"]
+script = ExtResource("1_m7agf")
+bulletScene = ExtResource("2_xir2u")
+
+[node name="Timer" type="Timer" parent="."]

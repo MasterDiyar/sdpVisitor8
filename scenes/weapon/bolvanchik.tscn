@@ -1,11 +1,12 @@
-[gd_scene load_steps=53 format=3 uid="uid://doyy8wggquua4"]
+[gd_scene load_steps=54 format=3 uid="uid://doyy8wggquua4"]
 
 [ext_resource type="Script" uid="uid://dd5778swfdttu" path="res://scripts/entity/enemy/Bolvanchik.cs" id="1_1p1bt"]
 [ext_resource type="Texture2D" uid="uid://c8gvxdqkjo3s4" path="res://assets/SPRITE_SHEET.png" id="2_g5gsh"]
 [ext_resource type="Texture2D" uid="uid://be408e0s5a4s7" path="res://assets/Agis/Agis.png" id="3_aqa1a"]
 [ext_resource type="Texture2D" uid="uid://bkstirdifdm28" path="res://assets/Fire golem(64x64).png" id="4_wnwky"]
-[ext_resource type="PackedScene" uid="uid://rtm1v7c84u6b" path="res://scripts/entity/aibehavior.tscn" id="5_wnwky"]
+[ext_resource type="PackedScene" path="res://scenes/entities/aibehavior.tscn" id="5_wnwky"]
 [ext_resource type="PackedScene" uid="uid://dxlrug2lqyvuk" path="res://scenes/weapon/inidat.tscn" id="6_08m6k"]
+[ext_resource type="PackedScene" uid="uid://blbxeun3jut0y" path="res://scenes/weapon/invihammer.tscn" id="7_fwi4f"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_aqa1a"]
 size = Vector2(25, 19)
@@ -356,10 +357,10 @@ shape = SubResource("RectangleShape2D_aqa1a")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 3
 sprite_frames = SubResource("SpriteFrames_psmch")
-animation = &"idle"
-frame_progress = 0.292443
+animation = &"attack"
+frame_progress = 0.164656
 flip_h = true
 
 [node name="aibehavior" parent="." instance=ExtResource("5_wnwky")]
-
-[node name="inidat" parent="." instance=ExtResource("6_08m6k")]
+weaponscene1 = ExtResource("6_08m6k")
+weaponscene2 = ExtResource("7_fwi4f")
