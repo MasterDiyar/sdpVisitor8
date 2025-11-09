@@ -5,13 +5,7 @@ using finalSDP.scripts.entity;
 public partial class Bolvanchik : Entity
 {
     private float Gravity = 400f;
-    public override float Speed {get; set;} = 800f;
-    public override void TakeDamage(float damage)
-    {
-        GD.Print("Bolvanchik Take Damage");
-        Hp -= damage;
-        base.TakeDamage(damage);
-    }
+    public override float Speed {get; set;} = 1200f;
 
     public override void _Ready()
     {

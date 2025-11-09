@@ -7,7 +7,7 @@ using System;
 
 public partial class Entity : CharacterBody2D, IEntity
 {
-    public virtual float MaxHp {get; set;}
+    [Export]public virtual float MaxHp {get; set;}
     public float Hp {get; set;}
     public virtual float MaxStamina {get; set;}
     public float Stamina {get; set;}
@@ -31,13 +31,13 @@ public partial class Entity : CharacterBody2D, IEntity
     
     public virtual void TakeDamage(float damage)
     {
-        
+        Hp -= damage;
         OnHurt?.Invoke(damage);
+        if (Hp <= 0) QueueFree();
     }
 
     public virtual void Attack(float angle)
     {
-        
         OnAttack?.Invoke(angle);
     }
     

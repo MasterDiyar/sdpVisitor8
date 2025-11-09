@@ -1,5 +1,6 @@
 using Godot;
 using System;
+using finalSDP.scripts.entity.bullet;
 using finalSDP.scripts.weapon;
 
 public partial class Catana : Weapon
@@ -49,6 +50,12 @@ public partial class Catana : Weapon
         tween.Finished += () => attacking = false;
         
         return true;
+	}
+
+	protected override void SpawnWay(Bullet node)
+	{
+		node.Position = GlobalPosition + 100 * node.Angle;
+		base.SpawnWay(node);	
 	}
 	
 }

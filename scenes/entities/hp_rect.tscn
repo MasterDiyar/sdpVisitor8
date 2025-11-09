@@ -1,0 +1,39 @@
+[gd_scene load_steps=4 format=3 uid="uid://5cktxh0rbvjm"]
+
+[ext_resource type="FontFile" uid="uid://btsoui3utd6pf" path="res://assets/antiquity-print(1).ttf" id="1_kjbk4"]
+[ext_resource type="Script" uid="uid://db7emcg7vm0f8" path="res://scripts/observers/HpRect.cs" id="1_uv6ur"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_uv6ur"]
+font = ExtResource("1_kjbk4")
+font_size = 60
+outline_size = 4
+outline_color = Color(0, 0, 0, 1)
+shadow_color = Color(0, 0, 0, 1)
+shadow_offset = Vector2(2, 2)
+
+[node name="HpRect" type="ColorRect"]
+texture_filter = 3
+anchors_preset = -1
+anchor_left = -0.017
+anchor_right = 0.017
+anchor_bottom = 0.009
+offset_left = 0.640003
+offset_right = -0.640003
+offset_bottom = 0.28
+color = Color(0.866025, 0.602783, 0.347174, 1)
+script = ExtResource("1_uv6ur")
+
+[node name="Line2D" type="Line2D" parent="."]
+points = PackedVector2Array(1, 5, 63, 5)
+width = 8.0
+default_color = Color(1, 0.0705882, 0.0745098, 1)
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 1.0
+offset_top = 1.0
+offset_right = 139.0
+offset_bottom = 89.0
+scale = Vector2(0.1, 0.1)
+text = "100%"
+label_settings = SubResource("LabelSettings_uv6ur")
