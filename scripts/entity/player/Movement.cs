@@ -6,10 +6,11 @@ public partial class Movement : Node2D
 {
     private float MaxSpeed = 300;
     private float Speed = 200;
-    private float JumpForce = -1000;
+    private float JumpForce = -800;
     private float Gravity = 980f;
 
     private Player parent;
+    public Player Body { get; set; }
 
     public override void _Ready()
     {

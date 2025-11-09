@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://c8gvxdqkjo3s4" path="res://assets/SPRITE_SHEET.png" id="2_g5gsh"]
 [ext_resource type="Texture2D" uid="uid://be408e0s5a4s7" path="res://assets/Agis/Agis.png" id="3_aqa1a"]
 [ext_resource type="Texture2D" uid="uid://bkstirdifdm28" path="res://assets/Fire golem(64x64).png" id="4_wnwky"]
-[ext_resource type="PackedScene" uid="uid://rtm1v7c84u6b" path="res://scenes/entities/aibehavior.tscn" id="5_wnwky"]
+[ext_resource type="PackedScene" uid="uid://rtm1v7c84u6b" path="res://scripts/entity/aibehavior.tscn" id="5_wnwky"]
 [ext_resource type="PackedScene" uid="uid://dxlrug2lqyvuk" path="res://scenes/weapon/inidat.tscn" id="6_08m6k"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_aqa1a"]

@@ -1,8 +1,8 @@
-[gd_scene load_steps=6 format=4 uid="uid://ckcbsm5mx2iqo"]
+[gd_scene load_steps=6 format=4 uid="uid://dodwkf4qcb0i0"]
 
 [ext_resource type="Script" uid="uid://cuh4kfc8kuiyv" path="res://scripts/factories/HellLevel.cs" id="1_l0soq"]
 [ext_resource type="Texture2D" uid="uid://btucf6a54i8c" path="res://assets/bg/photo_2_2025-11-06_21-16-45.jpg" id="1_xch0t"]
-[ext_resource type="PackedScene" uid="uid://bashij07yv0xn" path="res://scenes/levels/tiles.tscn" id="3_fgdhi"]
+[ext_resource type="PackedScene" uid="uid://dnth0m3nh4dy2" path="res://scenes/levels/tiles.tscn" id="3_fgdhi"]
 [ext_resource type="PackedScene" uid="uid://tvtqy2nte426" path="res://scenes/player/player.tscn" id="4_ouk6x"]
 [ext_resource type="PackedScene" uid="uid://doyy8wggquua4" path="res://scenes/weapon/bolvanchik.tscn" id="5_fgdhi"]
 

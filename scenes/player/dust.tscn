@@ -4,11 +4,11 @@
 
 [sub_resource type="Curve" id="Curve_q0nmu"]
 _limits = [0.0, 3.0, 0.0, 2.0]
-_data = [Vector2(0, 0.7415731), 0.0, 2.924857, 0, 0, Vector2(1.845491, 3), -4.052144, 0.0, 0, 0]
+_data = [Vector2(0, 0.741573), 0.0, 2.92486, 0, 0, Vector2(1.84549, 3), -4.05214, 0.0, 0, 0]
 point_count = 2
 
 [sub_resource type="Gradient" id="Gradient_ysfol"]
-colors = PackedColorArray(1, 1, 1, 1, 0.84313726, 0.84313726, 0.84313726, 0)
+colors = PackedColorArray(1, 1, 1, 1, 0.843137, 0.843137, 0.843137, 0)
 
 [node name="dust" type="CPUParticles2D"]
 texture_filter = 3

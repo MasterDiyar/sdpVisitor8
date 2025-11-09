@@ -6,23 +6,24 @@
 [ext_resource type="PackedScene" uid="uid://is4lhrvij5u" path="res://scenes/player/movement.tscn" id="4_lvxji"]
 [ext_resource type="PackedScene" uid="uid://biwhv35oavbo0" path="res://scenes/weapon/bow.tscn" id="5_p47bc"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_gmlin"]
-radius = 33.0151
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_p47bc"]
+size = Vector2(35, 59)
 
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_gmlin")
 
 [node name="AnimatedSprite2D" parent="." node_paths=PackedStringArray("particles2D") instance=ExtResource("1_dovo2")]
-animation = &"run"
+animation = &"idle"
 frame = 0
-frame_progress = 0.588605
+frame_progress = 0.607945
 particles2D = NodePath("../dust")
 
 [node name="dust" parent="." instance=ExtResource("2_gmlin")]
 position = Vector2(0, 28)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CircleShape2D_gmlin")
+position = Vector2(4.5, 2.5)
+shape = SubResource("RectangleShape2D_p47bc")
 
 [node name="Movement" parent="." instance=ExtResource("4_lvxji")]
 

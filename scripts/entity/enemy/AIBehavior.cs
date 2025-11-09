@@ -11,6 +11,7 @@ public partial class AIBehavior : Node2D
     private Entity entity;
     private float detectorRadius = 200f;
     private AnimatedSprite2D sprite;
+    public Bolvanchik Body { get; set; }
     
     public enum WhatNow
     {
