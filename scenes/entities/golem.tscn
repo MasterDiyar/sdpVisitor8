@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=3 uid="uid://crfomrhrfc2ll"]
+[gd_scene load_steps=40 format=3 uid="uid://crfomrhrfc2ll"]
 
 [ext_resource type="Script" uid="uid://dwytsrpqak4hl" path="res://scripts/entity/enemy/Golem.cs" id="1_kc5cf"]
 [ext_resource type="Texture2D" uid="uid://chqkl82e6snn3" path="res://assets/Golems_Free_Version/Golem_1/Blue/White_Swoosh_VFX/Golem_1_attack.png" id="1_peelf"]
@@ -6,6 +6,8 @@
 [ext_resource type="Texture2D" uid="uid://b6sb7qg7yto3o" path="res://assets/Golems_Free_Version/Golem_1/Blue/White_Swoosh_VFX/Golem_1_walk.png" id="3_rl3qv"]
 [ext_resource type="PackedScene" uid="uid://rtm1v7c84u6b" path="res://scenes/entities/aibehavior.tscn" id="4_rl3qv"]
 [ext_resource type="PackedScene" uid="uid://5cktxh0rbvjm" path="res://scenes/entities/hp_rect.tscn" id="5_kc5cf"]
+[ext_resource type="PackedScene" uid="uid://cmfjilnngflri" path="res://scenes/weapon/cristalix.tscn" id="6_alypk"]
+[ext_resource type="PackedScene" uid="uid://bs20ov43h3k31" path="res://scenes/weapon/cristshoot.tscn" id="7_qy4pp"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_kc5cf"]
 atlas = ExtResource("1_peelf")
@@ -238,14 +240,18 @@ MaxHp = 1200.0
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_0kedg")
-animation = &"idle"
-frame_progress = 0.235243
+animation = &"attack"
+frame = 10
+frame_progress = 1.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
 position = Vector2(-1, 13.5)
 shape = SubResource("RectangleShape2D_10noc")
 
 [node name="aibehavior" parent="." instance=ExtResource("4_rl3qv")]
+weaponscene1 = ExtResource("6_alypk")
+weaponscene2 = ExtResource("7_qy4pp")
 
 [node name="HpRect" parent="." instance=ExtResource("5_kc5cf")]
 offset_left = -32.0

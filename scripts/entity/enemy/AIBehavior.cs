@@ -111,7 +111,7 @@ public partial class AIBehavior : Node2D
     protected virtual void Attack2(double delta)
     {
         sprite.Play("attack");
-        entity.Attack(45f);
+        entity.Attack(0f);
     }
 
     protected virtual void MoveEntity(double delta)

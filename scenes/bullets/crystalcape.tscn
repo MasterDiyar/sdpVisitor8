@@ -1,0 +1,61 @@
+[gd_scene load_steps=12 format=3 uid="uid://cgonmaghhss5a"]
+
+[ext_resource type="Script" uid="uid://d0qh8a0yukjqw" path="res://scripts/entity/bullet/Crystalcape.cs" id="1_ljnw7"]
+[ext_resource type="Texture2D" uid="uid://dska8vu6ocb7a" path="res://assets/bullets/crystalcate1.png" id="2_0l6p2"]
+[ext_resource type="Texture2D" uid="uid://dl0mvo66x2cs7" path="res://assets/bullets/crystalcate2.png" id="3_majlk"]
+[ext_resource type="Texture2D" uid="uid://dldruwd1m0ruw" path="res://assets/bullets/crystalcate3.png" id="4_pqrqi"]
+[ext_resource type="Texture2D" uid="uid://c6ht67ohndlni" path="res://assets/bullets/crystalcate4.png" id="5_ks3t3"]
+[ext_resource type="Texture2D" uid="uid://kxs3cc3cgt2o" path="res://assets/bullets/crystalcate5.png" id="6_abggo"]
+[ext_resource type="Texture2D" uid="uid://bdoaenibj1dp4" path="res://assets/bullets/crystalcate6.png" id="7_fho2s"]
+[ext_resource type="Texture2D" uid="uid://dqcbif0r4gn6e" path="res://assets/bullets/crystalcate7.png" id="8_1s3jf"]
+[ext_resource type="Texture2D" uid="uid://bsil6nujw2e4p" path="res://assets/bullets/crystalcate8.png" id="9_whma6"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ik31k"]
+size = Vector2(122, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_vkers"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_0l6p2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_majlk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_pqrqi")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_ks3t3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_abggo")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_fho2s")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_1s3jf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_whma6")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="crystalcape" type="Area2D"]
+texture_filter = 3
+script = ExtResource("1_ljnw7")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 24)
+shape = SubResource("RectangleShape2D_ik31k")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_vkers")
+frame_progress = 0.426096
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 1.6

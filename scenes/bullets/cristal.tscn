@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://onykao76jksa"]
+
+[ext_resource type="Script" uid="uid://de4q3ykdgsi4j" path="res://scripts/entity/bullet/Cristal.cs" id="1_avwpw"]
+[ext_resource type="Texture2D" uid="uid://byqlbsuvuc33h" path="res://assets/bullets/cristal.png" id="1_gd1l1"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_avwpw"]
+radius = 8.06226
+
+[node name="cristal" type="Area2D"]
+texture_filter = 3
+script = ExtResource("1_avwpw")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+scale = Vector2(3, 3)
+shape = SubResource("CircleShape2D_avwpw")
+
+[node name="Cristal" type="Sprite2D" parent="."]
+scale = Vector2(3, 3)
+texture = ExtResource("1_gd1l1")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 4.0

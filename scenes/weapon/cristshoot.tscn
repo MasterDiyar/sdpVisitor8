@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://bs20ov43h3k31"]
+
+[ext_resource type="Script" uid="uid://ri38clh0i52x" path="res://scripts/weapon/Cristshoot.cs" id="1_fnuk0"]
+[ext_resource type="PackedScene" uid="uid://onykao76jksa" path="res://scenes/bullets/cristal.tscn" id="2_0gtpb"]
+
+[node name="cristshoot" type="Node2D"]
+script = ExtResource("1_fnuk0")
+bulletScene = ExtResource("2_0gtpb")
+
+[node name="Timer" type="Timer" parent="."]

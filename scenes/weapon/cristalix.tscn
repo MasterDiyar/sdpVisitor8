@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://cmfjilnngflri"]
+
+[ext_resource type="Script" uid="uid://cfe3e4lsl8fqy" path="res://scripts/weapon/Cristalix.cs" id="1_6o556"]
+[ext_resource type="PackedScene" uid="uid://cgonmaghhss5a" path="res://scenes/bullets/crystalcape.tscn" id="2_k880t"]
+
+[node name="cristalix" type="Node2D"]
+script = ExtResource("1_6o556")
+bulletScene = ExtResource("2_k880t")
+
+[node name="Timer" type="Timer" parent="."]
