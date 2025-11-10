@@ -7,8 +7,8 @@
 [ext_resource type="PackedScene" uid="uid://tvtqy2nte426" path="res://scenes/player/player.tscn" id="4_slp24"]
 [ext_resource type="PackedScene" uid="uid://is4lhrvij5u" path="res://scenes/player/movement.tscn" id="5_ru1km"]
 [ext_resource type="PackedScene" uid="uid://ppu4w36e4acc" path="res://enemy_factory.tscn" id="7_puuqw"]
-[ext_resource type="PackedScene" uid="uid://doyy8wggquua4" path="res://scenes/entities/bolvanchik.tscn" id="8_fvsls"]
-[ext_resource type="PackedScene" uid="uid://rtm1v7c84u6b" path="res://scenes/entities/aibehavior.tscn" id="9_f030i"]
+[ext_resource type="PackedScene" path="res://scenes/entities/bolvanchik.tscn" id="8_fvsls"]
+[ext_resource type="PackedScene" path="res://scenes/entities/aibehavior.tscn" id="9_f030i"]
 
 [node name="first_scene" type="Node2D"]
 script = ExtResource("1_slp24")

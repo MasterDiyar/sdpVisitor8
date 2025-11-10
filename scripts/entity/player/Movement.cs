@@ -4,6 +4,7 @@ namespace finalSDP.scripts.entity.player;
 
 public partial class Movement : Node2D
 {
+    [Signal] public delegate void OnMoveEventHandler(float delta);
     private float MaxSpeed = 300;
     private float Speed = 200;
     private float JumpForce = -800;
@@ -33,6 +34,6 @@ public partial class Movement : Node2D
             velocity.Y = JumpForce;
         parent.Velocity = velocity;
         parent.MoveAndSlide();
-
+        if (direction != 0) EmitSignal("OnMoveEventHandler",direction);
     }
 }

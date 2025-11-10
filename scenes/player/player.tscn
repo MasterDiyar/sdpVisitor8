@@ -4,7 +4,7 @@
 [ext_resource type="Script" uid="uid://b6n6pxmin0ry5" path="res://scripts/entity/player/Player.cs" id="1_gmlin"]
 [ext_resource type="PackedScene" uid="uid://dvlxb4dmg4x7b" path="res://scenes/player/dust.tscn" id="2_gmlin"]
 [ext_resource type="PackedScene" uid="uid://is4lhrvij5u" path="res://scenes/player/movement.tscn" id="4_lvxji"]
-[ext_resource type="PackedScene" uid="uid://chdsxak3lc7hs" path="res://scenes/weapon/catana.tscn" id="5_p47bc"]
+[ext_resource type="PackedScene" path="res://scenes/weapon/catana.tscn" id="5_p47bc"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_p47bc"]
 size = Vector2(35, 59)

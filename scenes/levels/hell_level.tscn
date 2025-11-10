@@ -1,11 +1,11 @@
-[gd_scene load_steps=7 format=4 uid="uid://ckcbsm5mx2iqo"]
+[gd_scene load_steps=7 format=4 uid="uid://dodwkf4qcb0i0"]
 
 [ext_resource type="Script" uid="uid://cuh4kfc8kuiyv" path="res://scripts/factories/HellLevel.cs" id="1_l0soq"]
 [ext_resource type="Texture2D" uid="uid://btucf6a54i8c" path="res://assets/bg/photo_2_2025-11-06_21-16-45.jpg" id="1_xch0t"]
 [ext_resource type="PackedScene" uid="uid://dnth0m3nh4dy2" path="res://scenes/levels/tiles.tscn" id="3_fgdhi"]
 [ext_resource type="PackedScene" uid="uid://tvtqy2nte426" path="res://scenes/player/player.tscn" id="4_ouk6x"]
-[ext_resource type="PackedScene" uid="uid://doyy8wggquua4" path="res://scenes/entities/bolvanchik.tscn" id="5_fgdhi"]
-[ext_resource type="PackedScene" uid="uid://crfomrhrfc2ll" path="res://scenes/entities/golem.tscn" id="6_ouk6x"]
+[ext_resource type="PackedScene" path="res://scenes/entities/golem.tscn" id="6_ouk6x"]
+[ext_resource type="PackedScene" path="res://scenes/entities/bolvanchik.tscn" id="6_uv6kt"]
 
 [node name="hellLevel" type="Node2D"]
 texture_filter = 3
@@ -29,10 +29,8 @@ tile_map_data = PackedByteArray("AAAAABcAAQALAA8AAAAAABgAAQAKABAAAAAAABkAAQALABE
 [node name="Player" parent="." instance=ExtResource("4_ouk6x")]
 position = Vector2(632.355, 459.612)
 
-[node name="bolvanchik" parent="." instance=ExtResource("5_fgdhi")]
-position = Vector2(2182.1, 581.799)
-scale = Vector2(3, 3)
-
 [node name="Golem" parent="." instance=ExtResource("6_ouk6x")]
 position = Vector2(190, 632)
 scale = Vector2(3, 3)
+
+[node name="bolvanchik" parent="." instance=ExtResource("6_uv6kt")]

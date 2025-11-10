@@ -1,6 +1,10 @@
+using finalSDP.scripts.entity.player;
+using finalSDP.scripts.weapon;
+using Godot;
 namespace finalSDP.scripts.decorators;
 
-public class WeaponDecorator
+public partial class WeaponDecorator(Weapon weapon) : Weapon
 {
+    protected Weapon _weapon = weapon;
     
 }
