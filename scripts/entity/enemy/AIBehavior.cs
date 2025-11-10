@@ -119,6 +119,7 @@ public partial class AIBehavior : Node2D
         entity.Velocity = new Vector2(velocity.X, entity.Velocity.Y + entity.Gravity * (float)delta);
         entity.MoveAndSlide();
     }
+    
 
     protected virtual void TimerOnTimeout()
     {
