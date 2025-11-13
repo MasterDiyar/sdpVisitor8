@@ -8,6 +8,7 @@ public partial class AIBehavior : Node2D
 {
     [Export] Timer timer;
     [Export] private PackedScene weaponscene1, weaponscene2;
+    [Export] bool Inverted = false;
     private Weapon currentWep;
     private RandomNumberGenerator rng = new RandomNumberGenerator();
     private Player player;
@@ -77,14 +78,14 @@ public partial class AIBehavior : Node2D
     {
         entity.Direction = -1;
         sprite.Play("run");
-        sprite.FlipH = true;
+        sprite.FlipH = !Inverted;
     }
 
     protected virtual void Right(double delta)
     {
         entity.Direction = 1;
         sprite.Play("run");
-        sprite.FlipH = false;
+        sprite.FlipH = Inverted;
     }
 
     protected virtual void ToPlayer(double delta)

@@ -1,10 +1,13 @@
-[gd_scene load_steps=25 format=3 uid="uid://dvmxdapmbrifb"]
+[gd_scene load_steps=36 format=3 uid="uid://dvmxdapmbrifb"]
 
 [ext_resource type="Script" uid="uid://cpy62h4rk3ljl" path="res://scripts/entity/enemy/Mushroom.cs" id="1_u7jc2"]
 [ext_resource type="Texture2D" uid="uid://c7gsuvdjg25ep" path="res://assets/Forest_Monsters_FREE/Mushroom/Mushroom with VFX/Mushroom-Idle.png" id="2_til3n"]
 [ext_resource type="Texture2D" uid="uid://lbditclu04e7" path="res://assets/Forest_Monsters_FREE/Mushroom/Mushroom with VFX/Mushroom-Attack.png" id="2_y41n4"]
 [ext_resource type="PackedScene" uid="uid://rtm1v7c84u6b" path="res://scenes/entities/aibehavior.tscn" id="3_y41n4"]
+[ext_resource type="Texture2D" uid="uid://cme7bpr7fjhs1" path="res://assets/Forest_Monsters_FREE/Mushroom/Mushroom with VFX/Mushroom-Run.png" id="4_ohtko"]
 [ext_resource type="PackedScene" uid="uid://5cktxh0rbvjm" path="res://scenes/entities/hp_rect.tscn" id="5_y41n4"]
+[ext_resource type="PackedScene" uid="uid://64i80sase1go" path="res://scenes/weapon/sporeblaster.tscn" id="6_qfenl"]
+[ext_resource type="PackedScene" uid="uid://dbrdxfwsyxcg3" path="res://scenes/weapon/smoker.tscn" id="7_nl5uc"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_5vwej"]
 atlas = ExtResource("2_y41n4")
@@ -74,6 +77,38 @@ region = Rect2(400, 0, 80, 64)
 atlas = ExtResource("2_til3n")
 region = Rect2(480, 0, 80, 64)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_wf1k7"]
+atlas = ExtResource("4_ohtko")
+region = Rect2(0, 0, 80, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lf1qg"]
+atlas = ExtResource("4_ohtko")
+region = Rect2(80, 0, 80, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_51xtf"]
+atlas = ExtResource("4_ohtko")
+region = Rect2(160, 0, 80, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yxoyf"]
+atlas = ExtResource("4_ohtko")
+region = Rect2(240, 0, 80, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jij8j"]
+atlas = ExtResource("4_ohtko")
+region = Rect2(320, 0, 80, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nfjrj"]
+atlas = ExtResource("4_ohtko")
+region = Rect2(400, 0, 80, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_21k1a"]
+atlas = ExtResource("4_ohtko")
+region = Rect2(480, 0, 80, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fnvnr"]
+atlas = ExtResource("4_ohtko")
+region = Rect2(560, 0, 80, 64)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_5vwej"]
 animations = [{
 "frames": [{
@@ -136,6 +171,35 @@ animations = [{
 "loop": true,
 "name": &"idle",
 "speed": 7.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wf1k7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lf1qg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_51xtf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yxoyf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jij8j")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nfjrj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_21k1a")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fnvnr")
+}],
+"loop": true,
+"name": &"run",
+"speed": 5.0
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_m5soe"]
@@ -149,14 +213,18 @@ MaxHp = 120.0
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_5vwej")
 animation = &"attack"
-frame = 2
-frame_progress = 0.871381
+frame = 3
+frame_progress = 0.95456
+flip_h = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-0.5, 16.5)
+position = Vector2(0, 16)
 shape = SubResource("RectangleShape2D_m5soe")
 
 [node name="aibehavior" parent="." instance=ExtResource("3_y41n4")]
+weaponscene1 = ExtResource("6_qfenl")
+weaponscene2 = ExtResource("7_nl5uc")
+Inverted = true
 
 [node name="HpRect" parent="." instance=ExtResource("5_y41n4")]
 offset_left = -16.0

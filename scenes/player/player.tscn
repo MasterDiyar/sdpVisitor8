@@ -1,13 +1,19 @@
-[gd_scene load_steps=7 format=3 uid="uid://tvtqy2nte426"]
+[gd_scene load_steps=10 format=3 uid="uid://tvtqy2nte426"]
 
 [ext_resource type="PackedScene" uid="uid://cdp1h5qeh27ma" path="res://scenes/player/player_animation.tscn" id="1_dovo2"]
 [ext_resource type="Script" uid="uid://b6n6pxmin0ry5" path="res://scripts/entity/player/Player.cs" id="1_gmlin"]
 [ext_resource type="PackedScene" uid="uid://dvlxb4dmg4x7b" path="res://scenes/player/dust.tscn" id="2_gmlin"]
 [ext_resource type="PackedScene" uid="uid://is4lhrvij5u" path="res://scenes/player/movement.tscn" id="4_lvxji"]
-[ext_resource type="PackedScene" path="res://scenes/weapon/catana.tscn" id="5_p47bc"]
+[ext_resource type="Script" uid="uid://b48i4wq02aolu" path="res://scripts/entity/player/HpInspector.cs" id="5_0owmy"]
+[ext_resource type="FontFile" uid="uid://btsoui3utd6pf" path="res://assets/antiquity-print(1).ttf" id="5_75vfm"]
+[ext_resource type="PackedScene" uid="uid://chdsxak3lc7hs" path="res://scenes/weapon/catana.tscn" id="5_p47bc"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_p47bc"]
 size = Vector2(35, 59)
+
+[sub_resource type="LabelSettings" id="LabelSettings_0owmy"]
+font = ExtResource("5_75vfm")
+font_size = 52
 
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_gmlin")
@@ -22,6 +28,7 @@ particles2D = NodePath("../dust")
 position = Vector2(0, 28)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
 position = Vector2(4.5, 2.5)
 shape = SubResource("RectangleShape2D_p47bc")
 
@@ -29,5 +36,28 @@ shape = SubResource("RectangleShape2D_p47bc")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(1.7, 1.7)
+
+[node name="HpInspector" type="CanvasLayer" parent="Camera2D" node_paths=PackedStringArray("line", "hpLabel")]
+scale = Vector2(2, 2)
+transform = Transform2D(2, 0, 0, 2, 0, 0)
+script = ExtResource("5_0owmy")
+line = NodePath("Line2D")
+hpLabel = NodePath("Label")
+
+[node name="Line2D" type="Line2D" parent="Camera2D/HpInspector"]
+position = Vector2(16.5, 17)
+points = PackedVector2Array(0, 0, 100, 0)
+width = 17.0
+default_color = Color(1, 0.15, 0.15, 0.905882)
+
+[node name="Label" type="Label" parent="Camera2D/HpInspector"]
+texture_filter = 3
+offset_left = 16.5
+offset_top = 10.0
+offset_right = 172.5
+offset_bottom = 86.0
+scale = Vector2(0.2, 0.2)
+text = "Hp:10"
+label_settings = SubResource("LabelSettings_0owmy")
 
 [node name="catana" parent="." instance=ExtResource("5_p47bc")]

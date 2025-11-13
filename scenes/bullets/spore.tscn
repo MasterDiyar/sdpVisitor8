@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://cxkgxugrth1hl"]
+
+[ext_resource type="Script" uid="uid://dtvtb62sp7rpl" path="res://scripts/entity/bullet/Spore.cs" id="1_cgmoe"]
+[ext_resource type="Texture2D" uid="uid://cl84bvp8oo027" path="res://assets/bullets/spore.png" id="2_141pb"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_u0jcu"]
+radius = 8.0
+
+[node name="Spore" type="Area2D"]
+script = ExtResource("1_cgmoe")
+
+[node name="Spore" type="Sprite2D" parent="."]
+texture_filter = 3
+texture = ExtResource("2_141pb")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_u0jcu")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 3.0

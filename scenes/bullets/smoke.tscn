@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://cem4cnbnbxiv8"]
+
+[ext_resource type="Script" uid="uid://7akdeec6wd2o" path="res://scripts/entity/bullet/Smoke.cs" id="1_fbxk1"]
+[ext_resource type="Texture2D" uid="uid://bike7v33l2pjg" path="res://assets/bullets/ash.png" id="2_st36v"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_0ltc4"]
+radius = 37.054
+
+[node name="smoke" type="Area2D"]
+texture_filter = 3
+script = ExtResource("1_fbxk1")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+scale = Vector2(0.33, 0.33)
+shape = SubResource("CircleShape2D_0ltc4")
+
+[node name="Ash" type="Sprite2D" parent="."]
+position = Vector2(-3, -2)
+scale = Vector2(0.33, 0.33)
+texture = ExtResource("2_st36v")
+
+[node name="Timer" type="Timer" parent="."]

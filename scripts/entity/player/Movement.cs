@@ -34,6 +34,6 @@ public partial class Movement : Node2D
             velocity.Y = JumpForce;
         parent.Velocity = velocity;
         parent.MoveAndSlide();
-        if (direction != 0) EmitSignal("OnMoveEventHandler",direction);
+        if (direction != 0) EmitSignal(SignalName.OnMove,direction);
     }
 }

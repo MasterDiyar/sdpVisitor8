@@ -21,7 +21,7 @@ public partial class Bullet : Area2D, IBullet
     public override void _Process(double delta)
     {
         Velocity.Y += Gravity * (float)delta;
-        Position += Velocity ;
+        Position += Velocity ;  
     }
     
     public virtual void OnBodyHit(Node body)

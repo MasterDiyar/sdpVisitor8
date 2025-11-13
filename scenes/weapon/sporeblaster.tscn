@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://64i80sase1go"]
+
+[ext_resource type="Script" uid="uid://2n3ekwjmda05" path="res://scripts/weapon/Sporeblaster.cs" id="1_2645y"]
+[ext_resource type="PackedScene" uid="uid://cxkgxugrth1hl" path="res://scenes/bullets/spore.tscn" id="2_ubgav"]
+
+[node name="sporeblaster" type="Node2D"]
+script = ExtResource("1_2645y")
+bulletScene = ExtResource("2_ubgav")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.5

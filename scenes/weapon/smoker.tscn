@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://dbrdxfwsyxcg3"]
+
+[ext_resource type="Script" uid="uid://df0lx52ljf2dp" path="res://scripts/weapon/Smoker.cs" id="1_y05hm"]
+[ext_resource type="PackedScene" uid="uid://cem4cnbnbxiv8" path="res://scenes/bullets/smoke.tscn" id="2_y44g0"]
+
+[node name="smoker" type="Node2D"]
+script = ExtResource("1_y05hm")
+bulletScene = ExtResource("2_y44g0")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.5
