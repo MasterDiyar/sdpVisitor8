@@ -1,20 +1,28 @@
 [gd_scene load_steps=4 format=3 uid="uid://mnbr5r2dtsqx"]
 
 [ext_resource type="Script" uid="uid://cl8gbs4sevo3s" path="res://scripts/observers/Menu.cs" id="1_yqeox"]
-[ext_resource type="PackedScene" uid="uid://cpijean2ogpyu" path="res://bg_for_main_menu.tscn" id="2_vjb58"]
-[ext_resource type="Script" uid="uid://66aehu5pbjqw" path="res://bg_for_main_menu.gd" id="3_con2f"]
+[ext_resource type="PackedScene" uid="uid://cpijean2ogpyu" path="res://scenes/levels/bg_for_main_menu.tscn" id="2_vjb58"]
+[ext_resource type="Script" uid="uid://bx17tys4qogjp" path="res://scenes/levels/bg_for_main_menu2.gd" id="3_con2f"]
 
-[node name="menu" type="Node2D" node_paths=PackedStringArray("_playButton")]
+[node name="menu" type="Node2D"]
 script = ExtResource("1_yqeox")
-_playButton = NodePath("Button")
 
-[node name="Button" type="Button" parent="."]
+[node name="Button2" type="Button" parent="."]
 offset_left = 839.0
 offset_top = 470.0
 offset_right = 1133.0
-offset_bottom = 582.0
+offset_bottom = 558.0
 theme_override_font_sizes/font_size = 50
-text = "Play"
+text = "KeyBord
+"
+
+[node name="Button3" type="Button" parent="."]
+offset_left = 839.0
+offset_top = 599.0
+offset_right = 1133.0
+offset_bottom = 690.0
+theme_override_font_sizes/font_size = 50
+text = "GamePad"
 
 [node name="BgForMainMenu" parent="." instance=ExtResource("2_vjb58")]
 script = ExtResource("3_con2f")

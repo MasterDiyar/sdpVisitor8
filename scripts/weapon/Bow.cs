@@ -1,12 +1,16 @@
 using Godot;
 using System;
+using finalSDP.scripts.Adapters;
 using finalSDP.scripts.weapon;
 
 public partial class Bow : Weapon
 {
 	private AnimatedSprite2D bow;
+	private MovementAdapter adapter;
+	private InputDevice device;
 	public override void _Ready()
 	{
+		adapter =  GetNode<MovementAdapter>("/root/MovementAdapter");
 		bow = GetNode<AnimatedSprite2D>("AnimatedSprite2D");
 		base._Ready();
 		
@@ -15,7 +19,17 @@ public partial class Bow : Weapon
 	public override void _Process(double delta)
 	{
 		base._Process(delta);
-		LookAt(GetGlobalMousePosition());
+		if(adapter.CurrentDevice == InputDevice.Keyboard) LookAt(GetGlobalMousePosition());
+		if (adapter.CurrentDevice == InputDevice.GamePad)
+		{
+			var aim = new Vector2(
+				Input.GetActionStrength("aim_right") - Input.GetActionStrength("aim_left"),
+				Input.GetActionStrength("aim_down") - Input.GetActionStrength("aim_up")
+				).Normalized();
+			LookAt(aim + GlobalPosition);
+		}
+		
+
 	}
 
 	protected override bool TimerCheck()

@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://is4lhrvij5u" path="res://scenes/player/movement.tscn" id="4_lvxji"]
 [ext_resource type="Script" uid="uid://b48i4wq02aolu" path="res://scripts/entity/player/HpInspector.cs" id="5_0owmy"]
 [ext_resource type="FontFile" uid="uid://btsoui3utd6pf" path="res://assets/antiquity-print(1).ttf" id="5_75vfm"]
-[ext_resource type="PackedScene" uid="uid://chdsxak3lc7hs" path="res://scenes/weapon/catana.tscn" id="5_p47bc"]
+[ext_resource type="PackedScene" uid="uid://biwhv35oavbo0" path="res://scenes/weapon/bow.tscn" id="7_0owmy"]
 [ext_resource type="Script" uid="uid://c25n63gwwvw6n" path="res://scripts/entity/player/TextLabel.cs" id="7_qek5x"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_p47bc"]
@@ -90,4 +90,4 @@ clip_text = true
 script = ExtResource("7_qek5x")
 rect = NodePath("../ColorRect")
 
-[node name="catana" parent="." instance=ExtResource("5_p47bc")]
+[node name="bow" parent="." instance=ExtResource("7_0owmy")]
