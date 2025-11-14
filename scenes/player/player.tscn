@@ -21,7 +21,7 @@ script = ExtResource("1_gmlin")
 [node name="AnimatedSprite2D" parent="." node_paths=PackedStringArray("particles2D") instance=ExtResource("1_dovo2")]
 animation = &"idle"
 frame = 0
-frame_progress = 0.607945
+frame_progress = 0.0
 particles2D = NodePath("../dust")
 
 [node name="dust" parent="." instance=ExtResource("2_gmlin")]

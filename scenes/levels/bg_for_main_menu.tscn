@@ -1,12 +1,12 @@
 [gd_scene load_steps=8 format=3 uid="uid://cpijean2ogpyu"]
 
-[ext_resource type="Texture2D" uid="uid://oyo8xi7j0gjt" path="res://assets/Layers/sky.png" id="1_5rcno"]
-[ext_resource type="Texture2D" uid="uid://ddkfawnf4vl7c" path="res://assets/Layers/clouds_bg.png" id="2_bnln8"]
-[ext_resource type="Texture2D" uid="uid://cmdbfja6jc2y0" path="res://assets/Layers/glacial_mountains.png" id="3_l6vtn"]
-[ext_resource type="Texture2D" uid="uid://bhq4mt72wi23m" path="res://assets/Layers/clouds_mg_3.png" id="4_v5sjj"]
-[ext_resource type="Texture2D" uid="uid://cafej01yjqvmd" path="res://assets/Layers/clouds_mg_2.png" id="5_bvry4"]
-[ext_resource type="Texture2D" uid="uid://bwwny5e4ha08t" path="res://assets/Layers/clouds_mg_1.png" id="6_uyfj3"]
-[ext_resource type="Texture2D" uid="uid://bmttv1f88t1pv" path="res://assets/Layers/cloud_lonely.png" id="7_b7w2i"]
+[ext_resource type="Texture2D" uid="uid://oyo8xi7j0gjt" path="res://assets/Layers/sky.png" id="1_gt14u"]
+[ext_resource type="Texture2D" uid="uid://ddkfawnf4vl7c" path="res://assets/Layers/clouds_bg.png" id="2_ugc8s"]
+[ext_resource type="Texture2D" uid="uid://cmdbfja6jc2y0" path="res://assets/Layers/glacial_mountains.png" id="3_p5xpc"]
+[ext_resource type="Texture2D" uid="uid://bhq4mt72wi23m" path="res://assets/Layers/clouds_mg_3.png" id="4_6s7h2"]
+[ext_resource type="Texture2D" uid="uid://cafej01yjqvmd" path="res://assets/Layers/clouds_mg_2.png" id="5_2ib2e"]
+[ext_resource type="Texture2D" uid="uid://bwwny5e4ha08t" path="res://assets/Layers/clouds_mg_1.png" id="6_0lwfo"]
+[ext_resource type="Texture2D" uid="uid://bmttv1f88t1pv" path="res://assets/Layers/cloud_lonely.png" id="7_enm6i"]
 
 [node name="BgForMainMenu" type="ParallaxBackground"]
 
@@ -18,7 +18,7 @@ motion_mirroring = Vector2(1913, 0)
 texture_filter = 3
 position = Vector2(963.25, 538.75)
 scale = Vector2(4.99349, 4.96528)
-texture = ExtResource("1_5rcno")
+texture = ExtResource("1_gt14u")
 
 [node name="ParallaxLayer2" type="ParallaxLayer" parent="."]
 motion_scale = Vector2(0.12, 1)
@@ -28,7 +28,7 @@ motion_mirroring = Vector2(1917, 0)
 texture_filter = 3
 position = Vector2(961.5, 539)
 scale = Vector2(4.99219, 4.99074)
-texture = ExtResource("2_bnln8")
+texture = ExtResource("2_ugc8s")
 
 [node name="ParallaxLayer3" type="ParallaxLayer" parent="."]
 motion_scale = Vector2(0.2, 1)
@@ -38,7 +38,7 @@ motion_mirroring = Vector2(1933, 0)
 texture_filter = 3
 position = Vector2(957, 554.5)
 scale = Vector2(5.03646, 4.94907)
-texture = ExtResource("3_l6vtn")
+texture = ExtResource("3_p5xpc")
 
 [node name="ParallaxLayer4" type="ParallaxLayer" parent="."]
 motion_scale = Vector2(0.32, 1)
@@ -48,7 +48,7 @@ motion_mirroring = Vector2(1912, 0)
 texture_filter = 3
 position = Vector2(964.5, 543)
 scale = Vector2(4.98698, 4.98148)
-texture = ExtResource("4_v5sjj")
+texture = ExtResource("4_6s7h2")
 
 [node name="ParallaxLayer5" type="ParallaxLayer" parent="."]
 motion_scale = Vector2(0.48, 1)
@@ -58,7 +58,7 @@ motion_mirroring = Vector2(1936, 0)
 texture_filter = 3
 position = Vector2(970, 548)
 scale = Vector2(5.04167, 5.11111)
-texture = ExtResource("5_bvry4")
+texture = ExtResource("5_2ib2e")
 
 [node name="ParallaxLayer6" type="ParallaxLayer" parent="."]
 motion_scale = Vector2(0.7, 1)
@@ -68,7 +68,7 @@ motion_mirroring = Vector2(1930, 0)
 texture_filter = 3
 position = Vector2(959.5, 547.5)
 scale = Vector2(5.02344, 4.98611)
-texture = ExtResource("6_uyfj3")
+texture = ExtResource("6_0lwfo")
 
 [node name="ParallaxLayer7" type="ParallaxLayer" parent="."]
 motion_scale = Vector2(0.95, 1)
@@ -78,4 +78,4 @@ motion_mirroring = Vector2(1930, 0)
 texture_filter = 3
 position = Vector2(963.5, 539)
 scale = Vector2(5.0026, 5.03704)
-texture = ExtResource("7_b7w2i")
+texture = ExtResource("7_enm6i")

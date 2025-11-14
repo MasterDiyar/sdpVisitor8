@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://chdsxak3lc7hs"]
+[gd_scene load_steps=4 format=3 uid="uid://04ks0d88im4x"]
 
 [ext_resource type="Script" uid="uid://oifhitdoggpm" path="res://scripts/weapon/Catana.cs" id="1_r6j8c"]
 [ext_resource type="Texture2D" uid="uid://cyn2xy8mibkh0" path="res://assets/bullets/catana.png" id="1_vcim6"]

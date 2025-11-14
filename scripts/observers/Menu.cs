@@ -1,17 +1,30 @@
 using Godot;
+using finalSDP.scripts.Adapters;
+
 public partial class Menu : Node2D
 {
-    [Export] private Button _playButton;
-
+    private MovementAdapter _adapter;
     public override void _Ready()
     {
-        _playButton.Pressed += JoinToGame;
+        _adapter = GetTree().Root.GetNode<MovementAdapter>("MovementAdapter");
+        var keyboard = GetNode<Button>("Button2");
+        var gamepad  = GetNode<Button>("Button3");
+        if (keyboard != null)
+            keyboard.Pressed += () => {
+                _adapter.SetDevice(InputDevice.Keyboard);
+                LoadGame();
+            };
+
+        if (gamepad != null)
+            gamepad.Pressed += () => {
+                _adapter.SetDevice(InputDevice.GamePad);
+                LoadGame();
+            };
     }
 
-    void JoinToGame()
+    private void LoadGame()
     {
-        var gameScene = GD.Load<PackedScene>("res://scenes/game.tscn").Instantiate();
-        GetParent().AddChild(gameScene);
-        QueueFree();
+        var scene = GD.Load<PackedScene>("res://scenes/game.tscn");
+        GetTree().ChangeSceneToPacked(scene); 
     }
 }
