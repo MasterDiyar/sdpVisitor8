@@ -8,6 +8,8 @@ public partial class Smoke : Bullet
 	public override void _Process(double delta)
 	{
 		Scale += (float) delta * Vector2.One;
+		Modulate = new Color (Modulate, Modulate.A-(float) delta);
+		
 	}
 	
 	public override void OnBodyHit(Node body)

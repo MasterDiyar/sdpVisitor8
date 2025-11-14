@@ -1,21 +1,23 @@
 using finalSDP.scripts.entity.player;
+using finalSDP.scripts.strategies;
 using finalSDP.scripts.weapon;
 using Godot;
+using Godot.Collections;
 
 namespace finalSDP.scripts.entity.enemy;
 
 public partial class AIBehavior : Node2D
 {
-    [Export] Timer timer;
-    [Export] private PackedScene weaponscene1, weaponscene2;
-    [Export] bool Inverted = false;
-    private Weapon currentWep;
-    private RandomNumberGenerator rng = new RandomNumberGenerator();
-    private Player player;
-    private Entity entity;
-    private float detectorRadius = 200f;
-    private double lastEquipTime = -10;
-    private AnimatedSprite2D sprite;
+    [Export] public Timer timer;
+    [Export] public PackedScene weaponscene1, weaponscene2;
+    [Export] public bool Inverted = false;
+    public Weapon currentWep;
+    public RandomNumberGenerator rng = new RandomNumberGenerator();
+    public Player player;
+    public Entity entity;
+    public float detectorRadius = 200f;
+    public double lastEquipTime = -10;
+    public AnimatedSprite2D sprite;
     
     public enum WhatNow
     {
@@ -28,99 +30,41 @@ public partial class AIBehavior : Node2D
         IdleAttack
     }
 
-    private WhatNow Behavior  = WhatNow.Idle;
-    private Vector2 velocity  = Vector2.Zero;
-    private Vector2 direction = Vector2.Zero;
+    public WhatNow Behavior  = WhatNow.Idle;
+    public Vector2 velocity  = Vector2.Zero;
     
-
+    private IBehavior[] behaviors;
     public override void _Ready()
     {
         timer.Timeout += TimerOnTimeout;
         timer.Start();
+        
         entity = GetParent<Entity>();
         player = GetParent().GetParent().GetNode<Player>("Player");
         sprite ??= entity.GetNode<AnimatedSprite2D>("AnimatedSprite2D");
+        
+        behaviors = [
+              new IdleBehavior() ,
+              new MoveBehavior() ,
+              new MoveBehavior() ,
+              new ToPlayerBehavior() ,
+              new AttackBehavior() ,
+              new AttackBehavior() 
+        ];
     }
 
     public override void _Process(double delta)
     {
-        switch (Behavior)
-        {
-            case WhatNow.Idle:
-                Idle(delta); break;
-            case WhatNow.RunLeft:
-                Left(delta); break;
-            case WhatNow.RunRight:
-                Right(delta); break;
-            case WhatNow.RunToPlayer:
-                ToPlayer(delta); break;
-            case WhatNow.Attack1:
-                Attack1(delta); break;
-            case WhatNow.Attack2:
-                Attack2(delta); break;
-            case WhatNow.IdleAttack:
-                AttackIdle(delta);break;        
-        }
-    }
+        float dir = 0f;
+        if (Behavior == WhatNow.RunLeft) dir = -1;
+        else if (Behavior == WhatNow.RunRight) dir = 1;
 
-    protected virtual void AttackIdle(double delta)
-    {
-        sprite.Play("attack");
-    }
-    
-    protected virtual void Idle(double delta)
-    {
-        entity.Direction = 0;
-        sprite.Play("idle");
-    }
+        float[] args = { dir };
 
-    protected virtual void Left(double delta)
-    {
-        entity.Direction = -1;
-        sprite.Play("run");
-        sprite.FlipH = !Inverted;
+        var behavior = behaviors[(int)Behavior];
+        
+        behavior.Update(this, args);
     }
-
-    protected virtual void Right(double delta)
-    {
-        entity.Direction = 1;
-        sprite.Play("run");
-        sprite.FlipH = Inverted;
-    }
-
-    protected virtual void ToPlayer(double delta)
-    {
-        if (player == null) {
-            Behavior = WhatNow.Idle;
-            return;
-        }
-
-        Vector2 toPlayer = player.GlobalPosition - entity.GlobalPosition;
-        if (toPlayer.Length() <= detectorRadius) {
-            entity.Direction = toPlayer.X > 0 ? 1 : -1;
-        } else 
-            Behavior = WhatNow.Idle;
-        sprite.Play("run");
-    }
-
-    protected virtual void Attack1(double delta)
-    {
-        sprite.Play("attack");
-        entity.Attack(0f);
-    }
-
-    protected virtual void Attack2(double delta)
-    {
-        sprite.Play("attack");
-        entity.Attack(0f);
-    }
-
-    protected virtual void MoveEntity(double delta)
-    {
-        entity.Velocity = new Vector2(velocity.X, entity.Velocity.Y + entity.Gravity * (float)delta);
-        entity.MoveAndSlide();
-    }
-    
 
     protected virtual void TimerOnTimeout()
     {

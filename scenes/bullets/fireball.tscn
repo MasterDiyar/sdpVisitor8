@@ -1,0 +1,46 @@
+[gd_scene load_steps=8 format=3 uid="uid://dmpk5gvovn6hh"]
+
+[ext_resource type="Texture2D" uid="uid://44kpog86tqk" path="res://assets/bullets/FB00_nyknck/FB001.png" id="1_kkxlm"]
+[ext_resource type="Texture2D" uid="uid://fo8ry2s7g27e" path="res://assets/bullets/FB00_nyknck/FB002.png" id="2_3dbie"]
+[ext_resource type="Texture2D" uid="uid://k0q621nsyrcg" path="res://assets/bullets/FB00_nyknck/FB003.png" id="3_xpoo6"]
+[ext_resource type="Texture2D" uid="uid://cwsg76ke0wdrm" path="res://assets/bullets/FB00_nyknck/FB004.png" id="4_4v3kp"]
+[ext_resource type="Texture2D" uid="uid://cole66bligtas" path="res://assets/bullets/FB00_nyknck/FB005.png" id="5_24tok"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_m3dts"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_kkxlm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_3dbie")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_xpoo6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_4v3kp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_24tok")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cwoxv"]
+size = Vector2(31, 17)
+
+[node name="fireball" type="Area2D"]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 3
+sprite_frames = SubResource("SpriteFrames_m3dts")
+frame_progress = 0.680201
+
+[node name="Timer" type="Timer" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(5.5, -1.5)
+shape = SubResource("RectangleShape2D_cwoxv")
