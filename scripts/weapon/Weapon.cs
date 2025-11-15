@@ -1,3 +1,4 @@
+using System;
 using finalSDP.scripts.entity;
 using finalSDP.scripts.entity.bullet;
 using finalSDP.scripts.entity.player;
@@ -7,10 +8,10 @@ namespace finalSDP.scripts.weapon;
 
 public partial class Weapon : Node2D
 {
-    [Export] protected PackedScene bulletScene;
+    [Export] public PackedScene bulletScene;
 
-    protected Entity Player;
-    protected Timer timer;
+    public Entity Player;
+    public Timer timer;
 
     public virtual float Damage { get; set; } = 10;
     public virtual float Consume { get; set; } = 10;
@@ -24,7 +25,7 @@ public partial class Weapon : Node2D
         Player.OnAttack += Attack;
     }
 
-    protected virtual bool TimerCheck()
+    public virtual bool TimerCheck()
     {
         timer ??= GetNode<Timer>("Timer");
         if (!timer.IsStopped()) return false;
@@ -32,7 +33,7 @@ public partial class Weapon : Node2D
         return true;
     }
 
-    protected virtual Bullet InstantiateBullet(float angle)
+    public virtual Bullet InstantiateBullet(float angle)
     {
         var bullet = bulletScene.Instantiate<Bullet>();
         bullet.Angle = new Vector2(Mathf.Cos(angle), Mathf.Sin(angle));
@@ -42,14 +43,19 @@ public partial class Weapon : Node2D
 
     public virtual void SpawnWay(Bullet node)
     {
-         GetTree().Root.AddChild(node);
+        GetTree().Root.AddChild(node);
     }
 
-    protected virtual void Attack(float angle = 0)
+    public virtual void Attack(float angle = 0)
     {
         if (!TimerCheck()) return;
         var bullet = InstantiateBullet(angle);
         SpawnWay(bullet);
+    }
+
+    public void OtPiska()
+    {
+        Player.OnAttack -= Attack;
     }
 
     public override void _ExitTree()

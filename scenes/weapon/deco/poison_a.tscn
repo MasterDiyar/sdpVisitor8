@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://d13ftby3jlrbg"]
+
+[ext_resource type="Script" uid="uid://ypebcvbwc8vg" path="res://scripts/decorators/PoisonousAttackWeaponDecorator.cs" id="1_ehew5"]
+
+[node name="poisonA" type="Node2D"]
+script = ExtResource("1_ehew5")

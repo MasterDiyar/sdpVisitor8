@@ -496,6 +496,7 @@ offset_right = 1920.0
 offset_bottom = 1080.0
 
 [node name="ColorRect2" type="ColorRect" parent="Enemy"]
+layout_mode = 0
 offset_left = 35.0
 offset_top = 16.0
 offset_right = 709.0
@@ -506,6 +507,7 @@ position = Vector2(365, 376)
 scale = Vector2(3, 3)
 sprite_frames = SubResource("SpriteFrames_drwfv")
 animation = &"new_animation_4"
+frame_progress = 0.29167
 
 [node name="HSlider" type="HSlider" parent="Enemy"]
 layout_mode = 0

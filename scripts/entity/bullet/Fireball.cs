@@ -1,15 +1,26 @@
+using finalSDP.scripts.entity.player;
 using Godot;
-using System;
 
-public partial class Fireball : Area2D
+namespace finalSDP.scripts.entity.bullet;
+
+public partial class Fireball : Bullet
 {
-	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
+		Speed = 21;
+		Gravity = 6;
+		var lal =
+		GetNode<AnimatedSprite2D>("AnimatedSprite2D");
+			lal.Rotation = Angle.Angle();
+			lal.Play();
+		base._Ready();
 	}
 
-	// Called every frame. 'delta' is the elapsed time since the previous frame.
-	public override void _Process(double delta)
+	public override void OnBodyHit(Node body)
 	{
+		if (body is not Player && body is Entity entity)
+		{
+			entity.TakeDamage(Damage);
+		}
 	}
 }

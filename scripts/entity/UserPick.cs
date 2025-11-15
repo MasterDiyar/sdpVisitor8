@@ -18,7 +18,8 @@ public partial class UserPick : Control
 
 	private int weaponIndex = 0, mobTypeIndex = 0, difficultyIndex = 0;
 	private string[] weaponPath = ["res://assets/bullets/catana.png", "res://assets/player/attack/bow1.png","res://assets/player/attack/poison1.png"],
-		mobTypeName = ["golem", "mushroom", "firegolem", "bolvanchik", "agis"];
+		mobTypeName = ["golem", "mushroom", "firegolem", "bolvanchik", "agis"],
+		weapondeco =  ["res://scenes/weapon/deco/knock.tscn","res://scenes/weapon/deco/poison_a.tscn","res://scenes/weapon/deco/rand_a.tscn","res://scenes/weapon/deco/scaler.tscn"];
 	private Texture2D[] weaponTexture;
 
 	private CheckButton[] decorators;
@@ -54,27 +55,16 @@ public partial class UserPick : Control
 			WeaponFactory.CreateSpray
 		};
 
-		var decoratorFact = new Func<Weapon, Weapon>[] {
-			w => new DoubleSizeWeaponDecorator(w),
-			w => new PoisonousAttackWeaponDecorator(w),
-			w => new RandomAttackWeaponDecorator(w),
-			w => new KnockBackWeaponDecorator(w)
-		};
-		var givenWeapon = weaponCon[weaponIndex]();
-
-		for (int i = 0; i < decorators.Length; i++) {
-			if (decorators[i].IsPressed())
-				givenWeapon = decoratorFact[i](givenWeapon);
-		}
-
+		var decoratorFact = weapondeco.Select(GD.Load<PackedScene>).ToArray();
+		
+		var user = UserFactory.CreatePlayer(new Vector2(100, 100));
 		if (checkbox.ButtonPressed)
 		{
 			var map = GD.Load<PackedScene>("res://scenes/levels/first_scene.tscn").Instantiate<Node2D>();
-			var user = UserFactory.CreatePlayer(new Vector2(100, 100));
+			
 			user.Material = anim.Material;
 			
 			map.AddChild(user);
-			user.AddChild(givenWeapon);
 			
 			GetParent().AddChild(map);
 			QueueFree();
@@ -82,7 +72,6 @@ public partial class UserPick : Control
 		else
 		{
 			var map = GD.Load<PackedScene>("res://scenes/levels/level.tscn").Instantiate<Node2D>();
-			var user = UserFactory.CreatePlayer(new Vector2(100, 100));
 			user.Material = anim.Material;
 			
 			var mob = EnemyFactory.CreateUnit(new Vector2(400, 100), mobTypeName[mobTypeIndex]);
@@ -90,11 +79,18 @@ public partial class UserPick : Control
 			
 			map.AddChild(user);
 			map.AddChild(mob);
-			user.AddChild(givenWeapon);
+			
 			
 			GetParent().AddChild(map);
 			QueueFree();
 		}
+		var givenWeapon = weaponCon[weaponIndex]();
+		user.AddChild(givenWeapon);
+        
+		for (int i = 0; i < decorators.Length; i++)
+         	if (decorators[i].IsPressed())
+         		givenWeapon.AddChild(decoratorFact[i].Instantiate());
+        
 	}
 
 	private void CheckboxOnPressed()

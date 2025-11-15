@@ -13,6 +13,12 @@ public partial class Arrow : Bullet
         base._Ready();
     }
 
+    public override void _Process(double delta)
+    {
+        base._Process(delta);
+        Rotation = Angle.Angle();
+    }
+
     public override void OnBodyHit(Node body)
     {
         if (body is not Player && body is Entity entity)

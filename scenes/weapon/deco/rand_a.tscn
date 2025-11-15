@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://csn5mwr1hdeug"]
+
+[ext_resource type="Script" uid="uid://dd025ocn2drc4" path="res://scripts/decorators/RandomAttackWeaponDecorator.cs" id="1_6scvb"]
+
+[node name="randA" type="Node2D"]
+script = ExtResource("1_6scvb")

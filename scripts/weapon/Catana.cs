@@ -20,10 +20,19 @@ public partial class Catana : Weapon
 		sprite.Scale=    new Vector2(GetGlobalMousePosition().X < GlobalPosition.X ?-1 : 1, 1);
 	}
 
-	protected override bool TimerCheck()
+	public override bool TimerCheck()
 	{
 		if (attacking) return false;
-		float downAngle = (sprite.Scale.X==-1)? Mathf.DegToRad(-60):Mathf.DegToRad(60);
+		float downAngle;
+		try
+		{
+			 downAngle = (sprite.Scale.X == -1) ? Mathf.DegToRad(-60) : Mathf.DegToRad(60);
+		}
+		catch (NullReferenceException)
+		{
+			sprite = GetNodeOrNull<Sprite2D>("Catana");
+			downAngle = (sprite.Scale.X == -1) ? Mathf.DegToRad(-60) : Mathf.DegToRad(60);
+		}
                           		
         attacking = true;
         tween?.Kill();

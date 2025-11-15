@@ -11,7 +11,7 @@ public partial class Inidat : Weapon
 		bulletScene ??= GD.Load<PackedScene>("res://scenes/bullets/whatisdad.tscn");
 	}
 
-	protected override void Attack(float angle = 0)
+	public override void Attack(float angle = 0)
 	{
 		if (!TimerCheck()) return;
 		for (int i = 0; i < 8; i++){

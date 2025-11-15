@@ -4,8 +4,7 @@ using finalSDP.scripts.weapon;
 
 public partial class Cristshoot : Weapon
 {
-
-	protected override void Attack(float angle = 0)
+	public override void Attack(float angle = 0)
 	{
 		if (!TimerCheck()) return;
 		for (int i = 0; i < 9; i++){

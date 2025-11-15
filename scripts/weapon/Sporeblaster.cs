@@ -6,7 +6,8 @@ using finalSDP.scripts.weapon;
 public partial class Sporeblaster : Weapon
 {
 	private bool Left = false;
-	protected override void Attack(float angle = 0)
+
+	public override void Attack(float angle = 0)
 	{
 		if (!TimerCheck()) return;
 		Left = !Left;
@@ -17,7 +18,7 @@ public partial class Sporeblaster : Weapon
 		}
 	}
 
-	protected override Bullet InstantiateBullet(float angle)
+	public override Bullet InstantiateBullet(float angle)
 	{
 		return base.InstantiateBullet(Left ? angle - GD.Randf() * Mathf.Pi/2: angle + Mathf.Pi+ GD.Randf() * Mathf.Pi/2);
 	}

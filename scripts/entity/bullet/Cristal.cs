@@ -16,7 +16,7 @@ public partial class Cristal : Bullet
     {
         Speed -= (float)delta * 2.5f;
         Velocity = Angle.Normalized() * Speed;
-		
+		Rotation = Angle.Angle();
         Position += Velocity ;
 		
         if (Speed < 0) QueueFree();

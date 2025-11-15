@@ -32,7 +32,7 @@ public partial class Bow : Weapon
 
 	}
 
-	protected override bool TimerCheck()
+	public override bool TimerCheck()
 	{
 		if (!timer.IsStopped()) return false;
 		bow.Play();

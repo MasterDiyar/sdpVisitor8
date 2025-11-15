@@ -1,5 +1,6 @@
-[gd_scene load_steps=8 format=3 uid="uid://dmpk5gvovn6hh"]
+[gd_scene load_steps=9 format=3 uid="uid://dmpk5gvovn6hh"]
 
+[ext_resource type="Script" uid="uid://deg81ag64a1vn" path="res://scripts/entity/bullet/Fireball.cs" id="1_3dbie"]
 [ext_resource type="Texture2D" uid="uid://44kpog86tqk" path="res://assets/bullets/FB00_nyknck/FB001.png" id="1_kkxlm"]
 [ext_resource type="Texture2D" uid="uid://fo8ry2s7g27e" path="res://assets/bullets/FB00_nyknck/FB002.png" id="2_3dbie"]
 [ext_resource type="Texture2D" uid="uid://k0q621nsyrcg" path="res://assets/bullets/FB00_nyknck/FB003.png" id="3_xpoo6"]
@@ -33,6 +34,7 @@ animations = [{
 size = Vector2(31, 17)
 
 [node name="fireball" type="Area2D"]
+script = ExtResource("1_3dbie")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 3

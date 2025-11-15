@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://c1880ykygvuxt"]
+
+[ext_resource type="Script" uid="uid://bn03uhbyrs6g8" path="res://scripts/decorators/DoubleSizeWeaponDecorator.cs" id="1_k13s3"]
+
+[node name="scaler" type="Node2D"]
+script = ExtResource("1_k13s3")

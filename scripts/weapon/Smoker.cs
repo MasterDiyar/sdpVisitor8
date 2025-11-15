@@ -5,7 +5,8 @@ using finalSDP.scripts.weapon;
 public partial class Smoker : Weapon
 {
 	private bool Left = true;
-	protected override void Attack(float angle = 0)
+
+	public override void Attack(float angle = 0)
 	{
 		if (!TimerCheck()) return;
 		Left = !Left;
