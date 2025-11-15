@@ -44,11 +44,7 @@ public partial class PoisonousAttackWeaponDecorator: Node2D
     {
         if (!TimerCheck()) return;
         var bullet = InstantiateBullet(angle);
-        SpawnWay(bullet);
+        //SpawnWay(bullet);
     }
-    public  void SpawnWay(Bullet node)
-    {
-        var nid = new PoisonousBulletDecorator(node);
-        _weapon.SpawnWay(nid);
-    }
+    
 }

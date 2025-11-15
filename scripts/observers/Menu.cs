@@ -25,6 +25,7 @@ public partial class Menu : Node2D
     private void LoadGame()
     {
         var scene = GD.Load<PackedScene>("res://scenes/game.tscn");
-        GetTree().ChangeSceneToPacked(scene); 
+        GetParent().AddChild(scene.Instantiate());
+        QueueFree();
     }
 }
