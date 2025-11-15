@@ -39,8 +39,8 @@ public partial class Weapon : Node2D
         bullet.Position = GlobalPosition;
         return bullet;
     }
-    
-    protected virtual void SpawnWay(Bullet node)
+
+    public virtual void SpawnWay(Bullet node)
     {
          GetTree().Root.AddChild(node);
     }

@@ -52,7 +52,7 @@ public partial class Catana : Weapon
         return true;
 	}
 
-	protected override void SpawnWay(Bullet node)
+	public override void SpawnWay(Bullet node)
 	{
 		node.Position = GlobalPosition + 100 * node.Angle;
 		base.SpawnWay(node);	

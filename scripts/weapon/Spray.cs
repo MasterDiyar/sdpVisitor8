@@ -5,7 +5,7 @@ using finalSDP.scripts.weapon;
 
 public partial class Spray : Weapon
 {
-    protected override void SpawnWay(Bullet node)
+    public override void SpawnWay(Bullet node)
     {
         node.Gravity = 0;
         base.SpawnWay(node);

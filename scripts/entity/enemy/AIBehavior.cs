@@ -19,6 +19,13 @@ public partial class AIBehavior : Node2D
     public double lastEquipTime = -10;
     public AnimatedSprite2D sprite;
     
+    public enum Tactic
+    {
+        Passive,
+        Normal,
+        Aggressive,
+    }
+    
     public enum WhatNow
     {
         Idle,
@@ -31,6 +38,7 @@ public partial class AIBehavior : Node2D
     }
 
     public WhatNow Behavior  = WhatNow.Idle;
+    public Tactic MyTactic = Tactic.Normal;
     public Vector2 velocity  = Vector2.Zero;
     
     private IBehavior[] behaviors;
@@ -68,7 +76,13 @@ public partial class AIBehavior : Node2D
 
     protected virtual void TimerOnTimeout()
     {
-        Behavior = (WhatNow)rng.RandiRange(0, 5);
+        Behavior = MyTactic switch
+        {
+            Tactic.Normal => (WhatNow)rng.RandiRange(0, 5),
+            Tactic.Aggressive => (WhatNow)rng.RandiRange(4, 5),
+            Tactic.Passive => (WhatNow)rng.RandiRange(0, 3),
+        };
+            
         GD.Print(Behavior);
         
         if (Behavior == WhatNow.Attack1) {Equip(weaponscene1);}

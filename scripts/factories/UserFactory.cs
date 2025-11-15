@@ -16,8 +16,15 @@ public partial class UserFactory : Node2D
         GetParent().AddChild(userScene);
         userScene.AddChild(move);
         
-        
         move.Body = userScene;
+        return userScene;
+    }
+
+    public static Player CreatePlayer(Vector2 position)
+    {
+        var userScene = GD.Load<PackedScene>("res://scenes/player/player.tscn").Instantiate<Player>();
+        userScene.GlobalPosition = position;
+        
         return userScene;
     }
 }

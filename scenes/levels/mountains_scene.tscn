@@ -1,11 +1,11 @@
 [gd_scene load_steps=7 format=4 uid="uid://dyp4lrn8onqg5"]
 
 [ext_resource type="Script" uid="uid://enqbgy7mh0ds" path="res://scripts/factories/MountainScene.cs" id="1_735mp"]
-[ext_resource type="PackedScene" uid="uid://cpijean2ogpyu" path="res://scenes/levels/bg_for_main_menu.tscn" id="2_hskcx"]
+[ext_resource type="PackedScene" path="res://scenes/levels/bg_for_main_menu.tscn" id="2_hskcx"]
 [ext_resource type="Script" uid="uid://66aehu5pbjqw" path="res://bg_for_main_menu.gd" id="3_5lncd"]
 [ext_resource type="PackedScene" uid="uid://dnth0m3nh4dy2" path="res://scenes/levels/tiles.tscn" id="4_gg6wp"]
 [ext_resource type="PackedScene" uid="uid://tvtqy2nte426" path="res://scenes/player/player.tscn" id="5_1chen"]
-[ext_resource type="PackedScene" path="res://scenes/entities/golem.tscn" id="6_ks0s0"]
+[ext_resource type="PackedScene" uid="uid://crfomrhrfc2ll" path="res://scenes/entities/golem.tscn" id="6_ks0s0"]
 
 [node name="mountains_scene" type="Node2D"]
 script = ExtResource("1_735mp")

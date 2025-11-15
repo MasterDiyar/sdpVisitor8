@@ -1,0 +1,140 @@
+﻿[gd_scene load_steps=14 format=3 uid="uid://x3b4wcfdkhqh"]
+
+[ext_resource type="Script" uid="uid://d3gdhy80imnap" path="res://scripts/entity/UserPick.cs" id="1_jqb3s"]
+[ext_resource type="Texture2D" uid="uid://cbk5pdy28p3xn" path="res://assets/player/idle1.png" id="1_k1lql"]
+[ext_resource type="Texture2D" uid="uid://dqy5kh8p32pbc" path="res://assets/player/idle2.png" id="2_s3a17"]
+[ext_resource type="Shader" uid="uid://ingk8qt44xc5" path="res://scenes/menu/colorchane.gdshader" id="2_sgkp4"]
+[ext_resource type="Texture2D" uid="uid://082rwqjxv7" path="res://assets/player/idle3.png" id="3_jqb3s"]
+[ext_resource type="Texture2D" uid="uid://ceppustpkgp1n" path="res://assets/player/idle4.png" id="4_sgkp4"]
+[ext_resource type="Texture2D" uid="uid://iukfr66fq42o" path="res://assets/player/idle5.png" id="5_n7yeh"]
+[ext_resource type="Texture2D" uid="uid://y1hgibipoihw" path="res://assets/player/idle6.png" id="6_x3t17"]
+[ext_resource type="Texture2D" uid="uid://cyn2xy8mibkh0" path="res://assets/bullets/catana.png" id="9_n7yeh"]
+[ext_resource type="FontFile" uid="uid://btsoui3utd6pf" path="res://assets/antiquity-print(1).ttf" id="9_sgkp4"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_n7yeh"]
+shader = ExtResource("2_sgkp4")
+shader_parameter/from_color = Color(0.247059, 0.0784314, 0.431373, 1)
+shader_parameter/to_color = Color(0.883221, 0.646915, 0.259537, 1)
+shader_parameter/threshold = 0.1
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_gwo0h"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_k1lql")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_s3a17")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_jqb3s")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_sgkp4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_n7yeh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_x3t17")
+}],
+"loop": true,
+"name": &"default",
+"speed": 6.0
+}]
+
+[sub_resource type="LabelSettings" id="LabelSettings_n7yeh"]
+line_spacing = 18.0
+font = ExtResource("9_sgkp4")
+font_size = 26
+font_color = Color(0, 0, 0, 1)
+
+[node name="UserPick" type="Control"]
+texture_filter = 3
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_jqb3s")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.732192, 0.897903, 0.988415, 1)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+material = SubResource("ShaderMaterial_n7yeh")
+position = Vector2(115, 191)
+scale = Vector2(3, 3)
+sprite_frames = SubResource("SpriteFrames_gwo0h")
+frame_progress = 0.969165
+
+[node name="ColorPicker" type="ColorPicker" parent="."]
+layout_mode = 0
+offset_left = 387.0
+offset_top = 26.0
+offset_right = 685.0
+offset_bottom = 598.0
+edit_alpha = false
+picker_shape = 2
+
+[node name="HSlider" type="HSlider" parent="."]
+layout_mode = 0
+offset_left = 111.0
+offset_top = 325.0
+offset_right = 300.0
+offset_bottom = 341.0
+max_value = 2.0
+tick_count = 3
+
+[node name="Weapon" type="Sprite2D" parent="."]
+position = Vector2(275, 207)
+texture = ExtResource("9_n7yeh")
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 0
+offset_left = 9.0
+offset_top = 1019.0
+offset_right = 168.0
+offset_bottom = 1075.0
+theme_override_fonts/font = ExtResource("9_sgkp4")
+theme_override_font_sizes/font_size = 32
+text = "Play"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_left = 38.2042
+offset_top = 374.58
+offset_right = 78.2042
+offset_bottom = 414.58
+
+[node name="CheckButton" type="CheckButton" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="CheckButton2" type="CheckButton" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="CheckButton3" type="CheckButton" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="CheckButton4" type="CheckButton" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 2
+offset_left = 82.0
+offset_top = 375.0
+offset_right = 318.0
+offset_bottom = 603.0
+scale = Vector2(0.5, 0.5)
+text = "double size
+poisonous
+random attack
+knockback"
+label_settings = SubResource("LabelSettings_n7yeh")

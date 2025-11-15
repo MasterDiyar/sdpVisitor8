@@ -1,4 +1,4 @@
-using finalSDP.scripts.entity.enemy;
+using finalSDP.scripts.entity;
 using finalSDP.scripts.entity.enemy;
 
 namespace finalSDP.scripts.factories;
@@ -17,6 +17,13 @@ public partial class EnemyFactory : Node2D
         GetParent().AddChild(userScene);
         
         return userScene;
-    } 
+    }
+
+    public static Entity CreateUnit(Vector2 position, string type)
+    {
+        var EntityScene = GD.Load<PackedScene>($"res://scenes/entities/{type}.tscn").Instantiate<Entity>();
+        EntityScene.GlobalPosition = position;
+        return EntityScene;
+    }
       
 }

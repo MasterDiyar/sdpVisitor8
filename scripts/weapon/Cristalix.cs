@@ -5,7 +5,7 @@ using finalSDP.scripts.weapon;
 
 public partial class Cristalix : Weapon
 {
-    protected override void SpawnWay(Bullet node)
+    public override void SpawnWay(Bullet node)
     {
         node.Scale *= 3;
         base.SpawnWay(node);
