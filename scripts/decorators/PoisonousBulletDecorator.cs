@@ -5,13 +5,19 @@ using Godot;
 
 namespace finalSDP.scripts.decorators;
 
-public partial class PoisonousBulletDecorator(Bullet bullet) : BulletDecorator(bullet)
+public partial class PoisonousBulletDecorator : Node2D
 {
-    public override void OnBodyHit(Node body)
+    Bullet _bullet;
+    public override void _Ready()
+    {
+        _bullet = GetParent<Bullet>();
+    }
+
+    public void OnBodyHit(Node body)
     {
         if (body is not Player and Entity entity)
         {
-            entity.TakeDamage(Damage);
+            entity.TakeDamage(_bullet.Damage);
             entity.AddChild(GD.Load<PackedScene>("res://scenes/bullets/poison.tscn").Instantiate());
         }
     }

@@ -19,7 +19,7 @@ public partial class UserPick : Control
 	private int weaponIndex = 0, mobTypeIndex = 0, difficultyIndex = 0;
 	private string[] weaponPath = ["res://assets/bullets/catana.png", "res://assets/player/attack/bow1.png","res://assets/player/attack/poison1.png"],
 		mobTypeName = ["golem", "mushroom", "firegolem", "bolvanchik", "agis"],
-		weapondeco =  ["res://scenes/weapon/deco/knock.tscn","res://scenes/weapon/deco/poison_a.tscn","res://scenes/weapon/deco/rand_a.tscn","res://scenes/weapon/deco/scaler.tscn"];
+		weapondeco =  ["res://scenes/weapon/deco/scaler.tscn","res://scenes/weapon/deco/poison_a.tscn","res://scenes/weapon/deco/rand_a.tscn","res://scenes/weapon/deco/knock.tscn"];
 	private Texture2D[] weaponTexture;
 
 	private CheckButton[] decorators;

@@ -1,6 +1,7 @@
 using Godot;
 using System;
 using finalSDP.scripts.entity.player;
+using finalSDP.scripts.visitors;
 
 public partial class HellLevel : Node2D
 {
@@ -14,6 +15,7 @@ public partial class HellLevel : Node2D
 	];
 	public override void _Ready()
 	{
+		OutOfSceneVisitor sceneVisitor = new OutOfSceneVisitor();
 		pl = GetNode<Player>("Player");
 		var camera = pl.GetNode<Camera2D>("Camera2D");
 

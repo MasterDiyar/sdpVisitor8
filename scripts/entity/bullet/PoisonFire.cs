@@ -1,3 +1,5 @@
+using finalSDP.scripts.entity.player;
+
 namespace finalSDP.scripts.entity.bullet;
 
 using Godot;
@@ -21,5 +23,13 @@ public partial class PoisonFire: Bullet
     {
         base._Process(delta);
         Shape.Position += Vector2.Right*40*Angle.X *(float)delta;
+    }
+
+    public override void OnBodyHit(Node body)
+    {
+        if (body is not Player && body is Entity entity)
+        {
+            entity.TakeDamage(Damage);
+        }
     }
 }

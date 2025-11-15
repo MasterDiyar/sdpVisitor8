@@ -14,7 +14,6 @@ public partial class DoubleSizeWeaponDecorator: Node2D
 
     public Bullet InstantiateBullet(float angle)
     {
-        
         var bullet = _weapon.bulletScene.Instantiate<Bullet>();
         bullet.Angle = new Vector2(Mathf.Cos(angle), Mathf.Sin(angle));
         bullet.Position = GlobalPosition;
@@ -28,7 +27,8 @@ public partial class DoubleSizeWeaponDecorator: Node2D
         timer.Start();
         timer.Timeout += () => { timer.Stop();};
         Player = _weapon.GetParent<Entity>();
-        Player.OnAttack += Attack;_weapon.OtPiska();
+        Player.OnAttack += Attack;
+        _weapon.OtPiska();
     }
 
     public virtual bool TimerCheck()

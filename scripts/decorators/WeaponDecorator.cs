@@ -5,7 +5,7 @@ using finalSDP.scripts.weapon;
 using Godot;
 namespace finalSDP.scripts.decorators;
 
-public partial class WeaponDecorator : Weapon, IWeapon
+public partial class WeaponDecorator :  IWeapon
 {
     protected Weapon _weapon;
 
@@ -14,34 +14,28 @@ public partial class WeaponDecorator : Weapon, IWeapon
         _weapon = weapon;
     }
     
-    
-    
-    public override void _Ready()
+    public WeaponDecorator()
     {
-        timer = GetParent().GetNode<Timer>("Timer");
+        var timer = _weapon.GetNode<Timer>("Timer");
         timer.Start();
         timer.Timeout += () => { timer.Stop();};
-        Player = GetParent().GetParent<Entity>();
+        var Player = _weapon.GetParent<Entity>();
         Player.OnAttack += Attack;
     }
 
-    public override Bullet InstantiateBullet(float angle)
+    public Bullet InstantiateBullet(float angle)
     {
-        GD.Print("InstantiateBullet");
         return _weapon.InstantiateBullet(angle);
     }
-
-    public override bool TimerCheck()
+    public bool TimerCheck()
     {
         return _weapon.TimerCheck();
     }
-
-    public override void SpawnWay(Bullet bullet)
+    public void SpawnWay(Bullet bullet)
     {
         _weapon.SpawnWay(bullet);
     }
-
-    public override void Attack(float angle = 0)
+    public void Attack(float angle = 0)
     {
         _weapon.Attack(angle);
     }

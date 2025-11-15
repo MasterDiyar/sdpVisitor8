@@ -56,10 +56,10 @@ shape = SubResource("CapsuleShape2D_tt38h")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 3
-position = Vector2(65, 0)
 sprite_frames = SubResource("SpriteFrames_4laxn")
 frame = 7
 frame_progress = 1.0
+offset = Vector2(65, 0)
 
 [node name="Timer" type="Timer" parent="."]
 one_shot = true
