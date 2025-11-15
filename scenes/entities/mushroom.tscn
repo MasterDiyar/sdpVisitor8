@@ -1,11 +1,11 @@
-[gd_scene load_steps=36 format=3 uid="uid://dvmxdapmbrifb"]
+[gd_scene load_steps=36 format=3 uid="uid://8ow4hgwfkn0n"]
 
 [ext_resource type="Script" uid="uid://cpy62h4rk3ljl" path="res://scripts/entity/enemy/Mushroom.cs" id="1_u7jc2"]
 [ext_resource type="Texture2D" uid="uid://c7gsuvdjg25ep" path="res://assets/Forest_Monsters_FREE/Mushroom/Mushroom with VFX/Mushroom-Idle.png" id="2_til3n"]
 [ext_resource type="Texture2D" uid="uid://lbditclu04e7" path="res://assets/Forest_Monsters_FREE/Mushroom/Mushroom with VFX/Mushroom-Attack.png" id="2_y41n4"]
-[ext_resource type="PackedScene" uid="uid://rtm1v7c84u6b" path="res://scenes/entities/aibehavior.tscn" id="3_y41n4"]
+[ext_resource type="PackedScene" path="res://scenes/entities/aibehavior.tscn" id="3_y41n4"]
 [ext_resource type="Texture2D" uid="uid://cme7bpr7fjhs1" path="res://assets/Forest_Monsters_FREE/Mushroom/Mushroom with VFX/Mushroom-Run.png" id="4_ohtko"]
-[ext_resource type="PackedScene" uid="uid://5cktxh0rbvjm" path="res://scenes/entities/hp_rect.tscn" id="5_y41n4"]
+[ext_resource type="PackedScene" path="res://scenes/entities/hp_rect.tscn" id="5_y41n4"]
 [ext_resource type="PackedScene" uid="uid://64i80sase1go" path="res://scenes/weapon/sporeblaster.tscn" id="6_qfenl"]
 [ext_resource type="PackedScene" uid="uid://dbrdxfwsyxcg3" path="res://scenes/weapon/smoker.tscn" id="7_nl5uc"]
 
@@ -207,6 +207,7 @@ size = Vector2(19, 33)
 
 [node name="Mushroom" type="CharacterBody2D"]
 texture_filter = 3
+scale = Vector2(1.5, 1.5)
 script = ExtResource("1_u7jc2")
 MaxHp = 120.0
 

@@ -1,13 +1,13 @@
-[gd_scene load_steps=55 format=3 uid="uid://doyy8wggquua4"]
+[gd_scene load_steps=55 format=3 uid="uid://cncljg0fnj2l2"]
 
 [ext_resource type="Script" uid="uid://dd5778swfdttu" path="res://scripts/entity/enemy/Bolvanchik.cs" id="1_1p1bt"]
 [ext_resource type="Texture2D" uid="uid://c8gvxdqkjo3s4" path="res://assets/SPRITE_SHEET.png" id="2_g5gsh"]
 [ext_resource type="Texture2D" uid="uid://be408e0s5a4s7" path="res://assets/Agis/Agis.png" id="3_aqa1a"]
 [ext_resource type="Texture2D" uid="uid://bkstirdifdm28" path="res://assets/Fire golem(64x64).png" id="4_wnwky"]
-[ext_resource type="PackedScene" uid="uid://rtm1v7c84u6b" path="res://scenes/entities/aibehavior.tscn" id="5_wnwky"]
+[ext_resource type="PackedScene" path="res://scenes/entities/aibehavior.tscn" id="5_wnwky"]
 [ext_resource type="PackedScene" uid="uid://dxlrug2lqyvuk" path="res://scenes/weapon/inidat.tscn" id="6_08m6k"]
-[ext_resource type="PackedScene" uid="uid://blbxeun3jut0y" path="res://scenes/weapon/invihammer.tscn" id="7_fwi4f"]
-[ext_resource type="PackedScene" uid="uid://5cktxh0rbvjm" path="res://scenes/entities/hp_rect.tscn" id="8_fm5rm"]
+[ext_resource type="PackedScene" path="res://scenes/weapon/invihammer.tscn" id="7_fwi4f"]
+[ext_resource type="PackedScene" path="res://scenes/entities/hp_rect.tscn" id="8_fm5rm"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_aqa1a"]
 size = Vector2(25, 19)
@@ -349,6 +349,7 @@ animations = [{
 }]
 
 [node name="bolvanchik" type="CharacterBody2D"]
+scale = Vector2(3, 3)
 script = ExtResource("1_1p1bt")
 MaxHp = 400.0
 

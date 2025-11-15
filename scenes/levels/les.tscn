@@ -1,10 +1,11 @@
-[gd_scene load_steps=7 format=4 uid="uid://dqnqaspcxjyhi"]
+[gd_scene load_steps=8 format=4 uid="uid://dqnqaspcxjyhi"]
 
 [ext_resource type="Script" uid="uid://bsamw1ymir0wo" path="res://scripts/factories/ForestLevel.cs" id="1_sgfg8"]
 [ext_resource type="Texture2D" uid="uid://v3qhc7cghwsx" path="res://assets/bg/photo_2025-11-06_21-16-37.jpg" id="2_gebpc"]
 [ext_resource type="PackedScene" uid="uid://dnth0m3nh4dy2" path="res://scenes/levels/tiles.tscn" id="3_5pugt"]
 [ext_resource type="PackedScene" uid="uid://tvtqy2nte426" path="res://scenes/player/player.tscn" id="4_lseyo"]
-[ext_resource type="PackedScene" path="res://scenes/entities/bolvanchik.tscn" id="5_yllwu"]
+[ext_resource type="PackedScene" uid="uid://cncljg0fnj2l2" path="res://scenes/entities/bolvanchik.tscn" id="5_yllwu"]
+[ext_resource type="PackedScene" uid="uid://8ow4hgwfkn0n" path="res://scenes/entities/mushroom.tscn" id="6_gebpc"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_sgfg8"]
 size = Vector2(99.8109, 107.521)
@@ -38,3 +39,6 @@ position = Vector2(1584, 537)
 rotation = 0.785398
 scale = Vector2(1.13, 1.13)
 shape = SubResource("RectangleShape2D_sgfg8")
+
+[node name="Mushroom" parent="." instance=ExtResource("6_gebpc")]
+position = Vector2(986.671, 537.903)

@@ -1,0 +1,329 @@
+﻿@startuml
+skinparam classAttributeIconSize 0
+
+interface IDecorator {
+  +Vector2 GetMove()
+  +bool JumpPressed()
+  +bool AttactPressed()
+}
+
+enum InputDevice {
+ Keyboard; GamePad
+  }
+
+class MovementAdapter {
+  - current : IDecorator
+  + CurrentDevice : InputDevice
+  + SetDevice(device : InputDevice)
+}
+
+class KeyBordAdapter implements IDecorator
+class GamePadAdapter implements IDecorator
+
+class Movement {
+  + _PhysicsProcess(delta : double)
+  - adapter : MovementAdapter
+}
+
+class Menu {
+  + _Ready()
+  - LoadGame()
+}
+
+MovementAdapter o--> IDecorator
+KeyBordAdapter ..|> IDecorator
+GamePadAdapter ..|> IDecorator
+
+Movement --> MovementAdapter
+Menu --> MovementAdapter : SetDevice(...)
+
+@enduml
+@startuml
+actor Player
+participant Menu
+participant MovementAdapter as Adapter
+participant Movement
+
+== В главном меню ==
+Player -> Menu : click "Keyboard"
+Menu -> Adapter : SetDevice(Keyboard)
+
+== На уровне ==
+Player -> Movement : _PhysicsProcess(delta)
+Movement -> Adapter : CurrentDevice?
+Adapter --> Movement : Keyboard
+Movement -> Adapter : current.GetMove()/JumpPressed()/AttactPressed()
+note right: Movement уже не знает про клаву/пад — только интерфейс IDecorator
+
+== Альтернатива ==
+Player -> Menu : click "GamePad"
+Menu -> Adapter : SetDevice(GamePad)
+@enduml
+@startuml
+skinparam classAttributeIconSize 0
+title Decorator: bullets & weapons
+
+' ==== BULLET side ====
+package "bullet decorators" {
+  class Bullet
+  interface IBullet
+
+  class BulletDecorator {
+    - _bullet : Bullet
+    + OnBodyHit(body : Node)
+    + OnTimeout()
+  }
+
+  Bullet ..|> IBullet
+  BulletDecorator --* Bullet
+  BulletDecorator ..|> IBullet
+  BulletDecorator ..|> Bullet
+
+  class KnockBackBulletDecorator
+  class PoisonousBulletDecorator
+  class OnlyPlayersDecorator
+
+  KnockBackBulletDecorator --|> BulletDecorator
+  PoisonousBulletDecorator --|> BulletDecorator
+  OnlyPlayersDecorator --|> BulletDecorator
+}
+
+' ==== WEAPON side ====
+package "weapon decorators" {
+  class Weapon {
+    - bulletScene : PackedScene
+    + Attack(angle : float)
+    + InstantiateBullet(angle : float) : Bullet
+    + SpawnWay(b : Bullet)
+    + TimerCheck() : bool
+  }
+
+  ' Эти классы держат ссылку на Weapon и модифицируют пулю/спавн перед делегацией
+  class DoubleSizeWeaponDecorator {
+    - _weapon : Weapon
+    + Attack(angle : float)
+    + InstantiateBullet(angle : float) : Bullet
+    + SpawnWay(b : Bullet)
+    + TimerCheck() : bool
+  }
+
+  class KnockBackWeaponDecorator {
+    - _weapon : Weapon
+    + Attack(angle : float)
+    + InstantiateBullet(angle : float) : Bullet
+    + SpawnWay(b : Bullet)
+    + TimerCheck() : bool
+  }
+
+  class PoisonousAttackWeaponDecorator {
+    - _weapon : Weapon
+    + Attack(angle : float)
+    + InstantiateBullet(angle : float) : Bullet
+    + SpawnWay(b : Bullet)
+    + TimerCheck() : bool
+  }
+
+  class RandomAttackWeaponDecorator {
+    - _weapon : Weapon
+    + Attack(angle : float)
+    + InstantiateBullet(angle : float) : Bullet
+    + SpawnWay(b : Bullet)
+    + TimerCheck() : bool
+  }
+
+  DoubleSizeWeaponDecorator --> Weapon : delegates
+  KnockBackWeaponDecorator --> Weapon : delegates
+  PoisonousAttackWeaponDecorator --> Weapon : delegates
+  RandomAttackWeaponDecorator --> Weapon : delegates
+}
+
+' Связь между слоями: декораторы оружия могут создавать/оборачивать пулю декораторами
+DoubleSizeWeaponDecorator ..> BulletDecorator
+KnockBackWeaponDecorator  ..> KnockBackBulletDecorator
+PoisonousAttackWeaponDecorator ..> PoisonousBulletDecorator
+@enduml
+@startuml
+skinparam classAttributeIconSize 0
+title Factory: user/enemy/weapon creation
+
+class UserFactory {
+  + CreateUser() : Player
+  + CreatePlayer(position : Vector2) : Player
+  - PlayerScene : PackedScene
+  - MovementComponentScene : PackedScene
+}
+
+class EnemyFactory {
+  + CreateEnemy() : Bolvanchik
+  + CreateUnit(position : Vector2, type : string) : Entity
+  - EnemyScene : PackedScene
+  - MovementComponentEnemyScene : PackedScene
+}
+
+class WeaponFactory {
+  + CreateBow() : Weapon
+  + CreateCatana() : Weapon
+  + CreateSpray() : Weapon
+}
+
+class FirstScene {
+  + _Ready()
+}
+
+class Player
+class Bolvanchik
+class Entity
+class Weapon
+
+FirstScene --> UserFactory : get & call
+FirstScene --> EnemyFactory : get & call
+
+UserFactory ..> Player : instantiates
+EnemyFactory ..> Bolvanchik : instantiates
+EnemyFactory ..> Entity : CreateUnit(...)
+
+WeaponFactory ..> Weapon : returns concrete scene
+
+@enduml
+@startuml
+skinparam classAttributeIconSize 0
+title Observer: Entity (publisher) & Weapon (subscriber)
+
+class Entity {
+  + MaxHp : float
+  + Hp : float
+  + Stamina : float
+  + OnHurt(dmg : float)    ' Action<float>
+  + OnAttack(angle : float) ' Action<float>
+  + TakeDamage(dmg : float)
+  + Attack(angle : float)
+}
+
+class Weapon {
+  + bulletScene : PackedScene
+  + timer : Timer
+  + Damage : float
+  + Consume : float
+  + _Ready()
+  + TimerCheck() : bool
+  + InstantiateBullet(angle : float) : Bullet
+  + SpawnWay(b : Bullet)
+  + Attack(angle : float)
+  + OtPiska()
+  + _ExitTree()
+}
+
+class Bullet
+
+' Подписка/отписка на событие атаки
+Weapon ..> Entity : subscribes OnAttack\n(_Ready)\n& unsubscribes (_ExitTree/OtPiska)
+Weapon ..> Bullet : creates in Attack()
+
+@enduml
+@startuml
+skinparam classAttributeIconSize 0
+title Strategy: AIBehavior + IBehavior
+
+interface IBehavior {
+  + Update(context : AIBehavior, delta : float[])
+}
+
+class AIBehavior {
+  + Behavior : WhatNow
+  + MyTactic : Tactic
+  + timer : Timer
+  + player : Player
+  + entity : Entity
+  + sprite : AnimatedSprite2D
+  + currentWep : Weapon
+  - behaviors : IBehavior[]
+  + _Ready()
+  + _Process(delta : double)
+  - TimerOnTimeout()
+  - Equip(scene : PackedScene)
+}
+
+enum WhatNow { 
+Idle; RunLeft; RunRight; RunToPlayer; Attack1; Attack2; IdleAttack
+ }
+enum Tactic  {
+ Passive; Normal; Aggressive 
+ }
+
+class IdleBehavior        implements IBehavior
+class MoveBehavior        implements IBehavior
+class ToPlayerBehavior    implements IBehavior
+class AttackBehavior      implements IBehavior
+
+class Entity
+class Player
+class Weapon
+
+AIBehavior --> IBehavior : uses (array)
+IdleBehavior ..|> IBehavior
+MoveBehavior ..|> IBehavior
+ToPlayerBehavior ..|> IBehavior
+AttackBehavior ..|> IBehavior
+
+AIBehavior --> Entity
+AIBehavior --> Player
+AIBehavior --> Weapon : Equip(...)
+@enduml
+@startuml
+skinparam classAttributeIconSize 0
+title Visitor: IEntity + IVisitor + Entity + DebugVisitor/OutOfSceneVisitor
+
+interface IEntity {
+  + Visit(visitor : IVisitor)
+  + TakeDamage(dmg : float)
+  + Attack(angle : float)
+}
+
+class Entity implements IEntity {
+  + MaxHp : float
+  + Hp : float
+  + MaxStamina : float
+  + Stamina : float
+  + Speed : float
+  + Gravity : float
+  + OnHurt(dmg : float)
+  + OnAttack(angle : float)
+  + Visit(visitor : IVisitor)
+  + TakeDamage(dmg : float)
+  + Attack(angle : float)
+}
+
+interface IVisitor {
+  + Visit(e : Entity)
+  ' (you can add overloads if you later have more element types)
+}
+
+class DebugVisitor implements IVisitor {
+  + GetALlMobs(nodes : IEnumerable<Node>)
+  + Visit(e : Entity)
+}
+
+class OutOfSceneVisitor implements IVisitor {
+  + Visit(e : Entity)
+}
+
+class Main {
+  - _debugVisitor : DebugVisitor
+  + _Process(delta : double)
+}
+
+class HellLevel {
+  + _Ready()
+  + _Process(delta : double)
+}
+
+Main --> DebugVisitor : uses
+HellLevel --> OutOfSceneVisitor : creates/uses
+Entity ..|> IEntity
+DebugVisitor ..|> IVisitor
+OutOfSceneVisitor ..|> IVisitor
+IVisitor <.. Entity : accepts via Visit(visitor)
+@enduml
+
+
+

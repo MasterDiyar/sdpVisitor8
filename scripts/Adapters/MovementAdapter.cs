@@ -1,8 +1,6 @@
 using System;
-
 namespace finalSDP.scripts.Adapters;
 using Godot;
-
 public partial class MovementAdapter : Control
 {
     public IDecorator current { get; private set; }
@@ -12,7 +10,6 @@ public partial class MovementAdapter : Control
     public override void _Ready() {
         SetDevice(InputDevice.Keyboard);
     }
-    
     public void SetDevice(InputDevice device)
     {
         CurrentDevice = device; 
