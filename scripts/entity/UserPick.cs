@@ -57,15 +57,13 @@ public partial class UserPick : Control
 
 		var decoratorFact = weapondeco.Select(GD.Load<PackedScene>).ToArray();
 		
-		var user = UserFactory.CreatePlayer(new Vector2(100, 100));
+		var user = UserFactory.CreatePlayer(new Vector2(54, 644));
 		if (checkbox.ButtonPressed)
 		{
-			var map = GD.Load<PackedScene>("res://scenes/levels/first_scene.tscn").Instantiate<Node2D>();
-			
+			var map = GD.Load<PackedScene>("res://scenes/levels/first_scene.tscn").Instantiate<FirstScene>();
 			user.Material = anim.Material;
-			
 			map.AddChild(user);
-			
+			map.UserLoad();
 			GetParent().AddChild(map);
 			QueueFree();
 		}
