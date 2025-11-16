@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://vcyiawgjeol5"]
+
+[ext_resource type="Script" uid="uid://buphjoloq0g3d" path="res://scripts/decorators/KnockBackBulletDecorator.cs" id="1_pcmmm"]
+
+[node name="knockback_bullet_decorator" type="Node2D"]
+script = ExtResource("1_pcmmm")

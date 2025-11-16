@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://b680krpsqqy41"]
+
+[ext_resource type="Script" uid="uid://bcshqnspr7kxp" path="res://scripts/weapon/Darkshot.cs" id="1_fpimi"]
+[ext_resource type="PackedScene" uid="uid://ber8qw3ox1tdb" path="res://scenes/bullets/darkray.tscn" id="2_7m3ye"]
+
+[node name="darkshot" type="Node2D"]
+script = ExtResource("1_fpimi")
+bulletScene = ExtResource("2_7m3ye")
+
+[node name="Timer" type="Timer" parent="."]

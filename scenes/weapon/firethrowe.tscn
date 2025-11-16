@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://k5qv2iuqb4l0"]
+
+[ext_resource type="Script" uid="uid://diqagdxvtvvho" path="res://scripts/weapon/Firethrowe.cs" id="1_4oy7y"]
+[ext_resource type="PackedScene" uid="uid://dmpk5gvovn6hh" path="res://scenes/bullets/fireball.tscn" id="2_vusnj"]
+
+[node name="firethrowe" type="Node2D"]
+script = ExtResource("1_4oy7y")
+bulletScene = ExtResource("2_vusnj")
+
+[node name="Timer" type="Timer" parent="."]

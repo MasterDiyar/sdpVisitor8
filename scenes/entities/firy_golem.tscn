@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://bkstirdifdm28" path="res://assets/Fire golem(64x64).png" id="2_odgwt"]
 [ext_resource type="PackedScene" uid="uid://rtm1v7c84u6b" path="res://scenes/entities/aibehavior.tscn" id="3_3mgjs"]
 [ext_resource type="PackedScene" uid="uid://dbrdxfwsyxcg3" path="res://scenes/weapon/smoker.tscn" id="4_koqmr"]
-[ext_resource type="PackedScene" uid="uid://dmpk5gvovn6hh" path="res://scenes/bullets/fireball.tscn" id="5_a0udq"]
+[ext_resource type="PackedScene" uid="uid://k5qv2iuqb4l0" path="res://scenes/weapon/firethrowe.tscn" id="5_a0udq"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_f23tm"]
 size = Vector2(22, 29)
@@ -169,6 +169,7 @@ animations = [{
 
 [node name="firegolem" type="CharacterBody2D"]
 script = ExtResource("1_k278r")
+MaxHp = 400.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-1, 1.5)

@@ -44,6 +44,7 @@ public partial class Weapon : Node2D
 
     public virtual void SpawnWay(Bullet node)
     {
+        node.Scale = Player.Scale;
         GetTree().Root.AddChild(node);
     }
 

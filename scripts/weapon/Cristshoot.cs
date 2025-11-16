@@ -1,5 +1,6 @@
 using Godot;
 using System;
+using finalSDP.scripts.entity.bullet;
 using finalSDP.scripts.weapon;
 
 public partial class Cristshoot : Weapon
@@ -13,5 +14,11 @@ public partial class Cristshoot : Weapon
 			bullet.Position += 32 * Vector2.Down;
 			SpawnWay(bullet);
 		}
+	}
+
+	public override void SpawnWay(Bullet node)
+	{
+		base.SpawnWay(node);
+		node.Scale = Vector2.One;
 	}
 }

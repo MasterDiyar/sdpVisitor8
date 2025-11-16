@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://drium2c4xpehx"]
+
+[ext_resource type="Script" uid="uid://b2cfoc4ceexv1" path="res://scripts/entity/Bossbar.cs" id="1_hpwx6"]
+[ext_resource type="Texture2D" uid="uid://dw58vkg17w46v" path="res://assets/bossbar.png" id="2_klxyu"]
+
+[node name="bossbar" type="Node2D"]
+script = ExtResource("1_hpwx6")
+
+[node name="Line2D" type="Line2D" parent="."]
+points = PackedVector2Array(-381, 0, 380, 0)
+width = 58.0
+default_color = Color(0.67451, 0.196078, 0.196078, 1)
+
+[node name="Bossbar" type="Sprite2D" parent="."]
+texture_filter = 3
+texture = ExtResource("2_klxyu")

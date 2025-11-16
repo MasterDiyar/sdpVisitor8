@@ -19,7 +19,7 @@ public partial class UserPick : Control
 
 	private int weaponIndex = 0, mobTypeIndex = 0, difficultyIndex = 0;
 	private string[] weaponPath = ["res://assets/bullets/catana.png", "res://assets/player/attack/bow1.png","res://assets/player/attack/poison1.png"],
-		mobTypeName = ["golem", "mushroom", "firegolem", "bolvanchik", "agis"],
+		mobTypeName = ["golem", "mushroom", "firy_golem", "bolvanchik", "agis"],
 		weapondeco =  ["res://scenes/weapon/deco/scaler.tscn","res://scenes/weapon/deco/poison_a.tscn","res://scenes/weapon/deco/rand_a.tscn","res://scenes/weapon/deco/knock.tscn"];
 	private Texture2D[] weaponTexture;
 
@@ -70,10 +70,12 @@ public partial class UserPick : Control
 		}
 		else
 		{
+			user = UserFactory.CreatePlayer(new Vector2(54, -344));
 			var map = GD.Load<PackedScene>("res://scenes/levels/level.tscn").Instantiate<Node2D>();
 			user.Material = anim.Material;
 			
-			var mob = EnemyFactory.CreateUnit(new Vector2(400, 100), mobTypeName[mobTypeIndex]);
+			var mob = EnemyFactory.CreateUnit(new Vector2(400, -100), mobTypeName[mobTypeIndex]);
+			mob.Scale *= 3;
 			mob.GetNode<AIBehavior>("aibehavior").MyTactic = (AIBehavior.Tactic)difficultyIndex;
 			
 			map.AddChild(user);

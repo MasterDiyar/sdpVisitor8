@@ -1,0 +1,17 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://b7d5ndmp1milt"]
+
+[ext_resource type="Shader" uid="uid://dc0k0b66m8x85" path="res://scripts/entity/bullet/hole.gdshader" id="1_hhwlp"]
+
+[resource]
+shader = ExtResource("1_hhwlp")
+shader_parameter/intensity = 0.5
+shader_parameter/glitch_frequency = 3.224
+shader_parameter/glitch_duration = 0.5
+shader_parameter/red_displacement = 0.01
+shader_parameter/green_displacement = 0.02
+shader_parameter/blue_displacement = 0.02
+shader_parameter/scanline_intensity = 0.3
+shader_parameter/noise_intensity = 0.2
+shader_parameter/slice_intensity = 0.4
+shader_parameter/ghost_intensity = 0.1
+shader_parameter/negative_intensity = 0.0

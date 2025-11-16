@@ -1,0 +1,43 @@
+[gd_scene load_steps=8 format=3 uid="uid://ljex1qefmlv7"]
+
+[ext_resource type="Script" uid="uid://cqa3e066faf54" path="res://scripts/entity/bullet/Darkpowder.cs" id="1_lf447"]
+[ext_resource type="Texture2D" uid="uid://c6esrrct0hdhc" path="res://assets/bullets/agisbullet1.png" id="2_dmkmy"]
+[ext_resource type="Texture2D" uid="uid://db6p1rdra26mu" path="res://assets/bullets/agisbullet2.png" id="3_vapgg"]
+[ext_resource type="Texture2D" uid="uid://b3k7iihjix8qs" path="res://assets/bullets/agisbullet3.png" id="4_2oond"]
+[ext_resource type="Texture2D" uid="uid://wfjtv3dkf7rf" path="res://assets/bullets/agisbullet4.png" id="5_llrsp"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_lf447"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_s34pg"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_dmkmy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_vapgg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_2oond")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_llrsp")
+}],
+"loop": true,
+"name": &"default",
+"speed": 8.0
+}]
+
+[node name="darkpowder" type="Area2D"]
+script = ExtResource("1_lf447")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 3.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_lf447")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 3
+sprite_frames = SubResource("SpriteFrames_s34pg")
+frame_progress = 0.378955

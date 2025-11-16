@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://cuc1l2nvd6olj"]
+
+[ext_resource type="Script" uid="uid://ciiyp2wgk63ma" path="res://scripts/weapon/Darkpistol.cs" id="1_st6d5"]
+[ext_resource type="PackedScene" uid="uid://ljex1qefmlv7" path="res://scenes/bullets/darkpowder.tscn" id="2_2dxpf"]
+
+[node name="Darkpistol" type="Node2D"]
+script = ExtResource("1_st6d5")
+bulletScene = ExtResource("2_2dxpf")
+
+[node name="Timer" type="Timer" parent="."]

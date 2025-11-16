@@ -1,0 +1,77 @@
+[gd_scene load_steps=17 format=3 uid="uid://1r8rowot8qpf"]
+
+[ext_resource type="Script" uid="uid://dp1rl4syf2861" path="res://scripts/entity/bullet/Matterboom.cs" id="1_255oa"]
+[ext_resource type="Texture2D" uid="uid://5hbb7g3m6t2r" path="res://assets/bullets/blackhole1.png" id="2_255oa"]
+[ext_resource type="Material" uid="uid://b7d5ndmp1milt" path="res://scenes/matterboom.tres" id="2_n6pys"]
+[ext_resource type="Texture2D" uid="uid://cydt287pojngm" path="res://assets/bullets/blackhole2.png" id="3_n6pys"]
+[ext_resource type="Texture2D" uid="uid://ddd3b6qb7dfx0" path="res://assets/bullets/blackhole3.png" id="4_xiwys"]
+[ext_resource type="Texture2D" uid="uid://cjejpl6885uxe" path="res://assets/bullets/blackhole4.png" id="5_4qh87"]
+[ext_resource type="Texture2D" uid="uid://c5wv5m5nhjh4d" path="res://assets/bullets/blackhole5.png" id="6_0gibk"]
+[ext_resource type="Texture2D" uid="uid://bdpschpfl1o7x" path="res://assets/bullets/blackhole6.png" id="7_aptbv"]
+[ext_resource type="Texture2D" uid="uid://d04fmhpg064jm" path="res://assets/bullets/blackhole7.png" id="8_puhl0"]
+[ext_resource type="Texture2D" uid="uid://corlqho7ws8n5" path="res://assets/bullets/blackhole8.png" id="9_lugl6"]
+[ext_resource type="Texture2D" uid="uid://cf5kti8bw3f7j" path="res://assets/bullets/blackhole9.png" id="10_oldyi"]
+[ext_resource type="Texture2D" uid="uid://c5s2m7t85fl3y" path="res://assets/bullets/blackhole10.png" id="11_3woe0"]
+[ext_resource type="Texture2D" uid="uid://dm3tsj7mtntnb" path="res://assets/bullets/blackhole11.png" id="12_6tify"]
+[ext_resource type="Texture2D" uid="uid://j0iwloje28ll" path="res://assets/bullets/blackhole12.png" id="13_rtisk"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_rfx5w"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_255oa")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_n6pys")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_xiwys")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_4qh87")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_0gibk")
+}, {
+"duration": 1.5,
+"texture": ExtResource("7_aptbv")
+}, {
+"duration": 1.5,
+"texture": ExtResource("8_puhl0")
+}, {
+"duration": 1.5,
+"texture": ExtResource("9_lugl6")
+}, {
+"duration": 1.5,
+"texture": ExtResource("10_oldyi")
+}, {
+"duration": 1.5,
+"texture": ExtResource("11_3woe0")
+}, {
+"duration": 1.5,
+"texture": ExtResource("12_6tify")
+}, {
+"duration": 1.5,
+"texture": ExtResource("13_rtisk")
+}],
+"loop": false,
+"name": &"default",
+"speed": 12.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_87w1f"]
+radius = 49.163
+
+[node name="DarkBoom" type="Area2D"]
+texture_filter = 3
+script = ExtResource("1_255oa")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+material = ExtResource("2_n6pys")
+sprite_frames = SubResource("SpriteFrames_rfx5w")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_87w1f")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 4.0

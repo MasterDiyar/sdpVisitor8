@@ -15,7 +15,9 @@ public partial class Arrow : Bullet
 
     public override void _Process(double delta)
     {
-        base._Process(delta);
+        Velocity.Y += Gravity * (float)delta;
+        Position += Velocity ;  
+    
         Rotation = Angle.Angle();
     }
 
@@ -23,7 +25,7 @@ public partial class Arrow : Bullet
     {
         if (body is not Player && body is Entity entity)
         {
-            entity.TakeDamage(Damage);
+            entity.TakeDamage(Damage * 60);
         }
     }
 }

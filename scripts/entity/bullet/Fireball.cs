@@ -18,7 +18,7 @@ public partial class Fireball : Bullet
 
 	public override void OnBodyHit(Node body)
 	{
-		if (body is not Player && body is Entity entity)
+		if (body is Player entity)
 		{
 			entity.TakeDamage(Damage);
 		}

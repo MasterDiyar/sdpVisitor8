@@ -26,6 +26,7 @@ shadow_offset = Vector2(1, 2)
 script = ExtResource("1_gmlin")
 
 [node name="AnimatedSprite2D" parent="." node_paths=PackedStringArray("particles2D") instance=ExtResource("1_dovo2")]
+use_parent_material = true
 position = Vector2(0, -1.25)
 scale = Vector2(0.765625, 0.882813)
 animation = &"idle"

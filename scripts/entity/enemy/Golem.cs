@@ -8,7 +8,7 @@ public partial class Golem : Entity
 	{
 		base._Ready();
 		Speed = 800;
-		Gravity = 9.8f;
+		Gravity = 980f;
 	}
 
 	public override void _PhysicsProcess(double delta)
