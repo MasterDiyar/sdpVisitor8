@@ -11,6 +11,8 @@ public partial class PoisonousBulletDecorator : Node2D
     public override void _Ready()
     {
         _bullet = GetParent<Bullet>();
+        _bullet.OtPiska();
+        _bullet.BodyEntered += OnBodyHit;
     }
 
     public void OnBodyHit(Node body)
@@ -19,6 +21,7 @@ public partial class PoisonousBulletDecorator : Node2D
         {
             entity.TakeDamage(_bullet.Damage);
             entity.AddChild(GD.Load<PackedScene>("res://scenes/bullets/poison.tscn").Instantiate());
+            QueueFree();
         }
     }
 }

@@ -1,3 +1,4 @@
+using System;
 using Godot;
 
 namespace finalSDP.scripts.entity.bullet;
@@ -34,5 +35,16 @@ public partial class Bullet : Area2D, IBullet
     public virtual void OnTimeout()
     {
         QueueFree();
+    }
+
+    bool podpis = false;
+    public void OtPiska()
+    {
+        if (!podpis)
+            try {
+                BodyEntered -= OnBodyHit; }
+            catch (Exception e){ GD.Print(e.Message); }
+
+        podpis = true;
     }
 }

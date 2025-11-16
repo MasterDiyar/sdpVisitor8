@@ -5,46 +5,40 @@ using Godot;
 
 namespace finalSDP.scripts.decorators;
 
-public partial class PoisonousAttackWeaponDecorator: Node2D
+public partial class PoisonousAttackWeaponDecorator: Weapon
 {
-    protected Entity Player;
-    protected Timer timer;
-    private Weapon _weapon;
-
-
-    public Bullet InstantiateBullet(float angle)
-    {
-        
-        var bullet = _weapon.bulletScene.Instantiate<Bullet>();
-        bullet.Angle = new Vector2(Mathf.Cos(angle), Mathf.Sin(angle));
-        bullet.Position = GlobalPosition;
-        return bullet;
-    }
+    public Entity Player;
+    public Timer timer;
     
     public override void _Ready()
     {
+        isDecorator = true;
         _weapon = GetParent<Weapon>();
-        timer = GetParent().GetNode<Timer>("Timer");
+        timer = _weapon.GetTimer();
         timer.Start();
         timer.Timeout += () => { timer.Stop();};
-        Player = GetParent().GetParent<Entity>();
-        Player.OnAttack += Attack;
-        _weapon.OtPiska();
+        Player = _weapon.GetEntity();
+        if (!_weapon.isDecorator)_weapon.OtPiska();
     }
 
-    public virtual bool TimerCheck()
+    public override bool TimerCheck()
     {
-        timer ??= GetNode<Timer>("Timer");
-        if (!timer.IsStopped()) return false;
-        timer.Start();
-        return true;
+        return _weapon.TimerCheck();
     }
+    
+    public override Bullet InstantiateBullet(float angle)
+         {
+             GD.Print("poison attack");
+             var bullet = _weapon.InstantiateBullet(angle);
+             bullet.AddChild(GD.Load<PackedScene>("res://scenes/bullets/decorator/poison_bullet_decorator.tscn").Instantiate());
+             return bullet;
+         }
 
-    public virtual void Attack(float angle = 0)
+    public override void Attack(float angle = 0)
     {
         if (!TimerCheck()) return;
         var bullet = InstantiateBullet(angle);
-        //SpawnWay(bullet);
+        _weapon.SpawnWay(bullet);
     }
     
 }

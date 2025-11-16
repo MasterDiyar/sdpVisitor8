@@ -12,7 +12,8 @@ public partial class Weapon : Node2D
 
     public Entity Player;
     public Timer timer;
-
+    public bool isDecorator = false;
+    public Weapon _weapon;
     public virtual float Damage { get; set; } = 10;
     public virtual float Consume { get; set; } = 10;
 
@@ -52,10 +53,13 @@ public partial class Weapon : Node2D
         var bullet = InstantiateBullet(angle);
         SpawnWay(bullet);
     }
-
+    
+    bool otpisan = false;
     public void OtPiska()
     {
-        Player.OnAttack -= Attack;
+        if (!otpisan && Player != null)
+            Player.OnAttack -= Attack;
+        otpisan = true;
     }
 
     public override void _ExitTree()
@@ -63,6 +67,15 @@ public partial class Weapon : Node2D
         if (Player != null)
             Player.OnAttack -= Attack;
     }
-    
+
+    public virtual Timer GetTimer()
+    {
+        return isDecorator ? _weapon.GetTimer() : timer;
+    }
+
+    public virtual Entity GetEntity()
+    {
+        return isDecorator ? _weapon.GetEntity() : Player;
+    }
     
 }

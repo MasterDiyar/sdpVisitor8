@@ -5,50 +5,45 @@ using Godot;
 
 namespace finalSDP.scripts.decorators;
 
-public partial class KnockBackWeaponDecorator: Node2D
+public partial class KnockBackWeaponDecorator: Weapon
 {
-    protected Entity Player;
-    protected Timer timer;
-    private Weapon _weapon;
-
-
-    public Bullet InstantiateBullet(float angle)
-    {
-        
-        var bullet = _weapon.bulletScene.Instantiate<Bullet>();
-        bullet.Angle = new Vector2(Mathf.Cos(angle), Mathf.Sin(angle));
-        bullet.Position = GlobalPosition;
-        return bullet;
-    }
+    public Entity Player;
+    public Timer timer;
+    public Weapon _weapon;
+    
+    
 
     public override void _Ready()
     {
+        isDecorator = true;
         _weapon = GetParent<Weapon>();
-        timer = _weapon.GetNode<Timer>("Timer");
+        timer = _weapon.GetTimer();
         timer.Start();
         timer.Timeout += () => { timer.Stop(); };
-        Player = _weapon.GetParent<Entity>();
-        Player.OnAttack += Attack;
-        _weapon.OtPiska();
+        Player = _weapon.GetEntity();
+        if (!_weapon.isDecorator)_weapon.OtPiska();
     }
+    public override Bullet InstantiateBullet(float angle)
+         {
+             GD.Print("knockback");
+             var bullet = _weapon.InstantiateBullet(angle);
+             bullet.AddChild(GD.Load<PackedScene>("res://scenes/bullets/decorator/knockback_bullet_decorator.tscn").Instantiate());        
+             return bullet;
+         }
 
-    public virtual bool TimerCheck()
+    public override bool TimerCheck()
     {
-        timer ??= GetNode<Timer>("Timer");
-        if (!timer.IsStopped()) return false;
-        timer.Start();
-        return true;
+        return _weapon.TimerCheck();
     }
 
-    public virtual void Attack(float angle = 0)
+    public override void Attack(float angle = 0)
     {
         if (!TimerCheck()) return;
         var bullet = InstantiateBullet(angle);
         SpawnWay(bullet);
     }
-    public virtual void SpawnWay(Bullet node)
+    public override void SpawnWay(Bullet node)
     {
-        var nid = new KnockBackBulletDecorator(node);
-        _weapon.SpawnWay(nid);
+        _weapon.SpawnWay(node);
     }
 }

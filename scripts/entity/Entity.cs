@@ -25,8 +25,6 @@ public partial class Entity : CharacterBody2D, IEntity
         Stamina = MaxStamina;
         
     }
-    
-    
     public virtual void Visit(IVisitor visitor) => visitor.Visit(this);
     
     public virtual void TakeDamage(float damage)

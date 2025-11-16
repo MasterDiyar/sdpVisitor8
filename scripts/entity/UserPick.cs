@@ -1,5 +1,6 @@
 ﻿using Godot;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using finalSDP.scripts.decorators;
 using finalSDP.scripts.entity.enemy;
@@ -86,11 +87,18 @@ public partial class UserPick : Control
 		}
 		var givenWeapon = weaponCon[weaponIndex]();
 		user.AddChild(givenWeapon);
-        
+		List<Weapon> decors = [];
 		for (int i = 0; i < decorators.Length; i++)
          	if (decorators[i].IsPressed())
-         		givenWeapon.AddChild(decoratorFact[i].Instantiate());
-        
+            {
+	            var newDecor = decoratorFact[i].Instantiate<Weapon>();
+	            if (decors.Count == 0)
+		            givenWeapon.AddChild(newDecor);
+	            else
+		            decors[^1].AddChild(newDecor);
+
+	            decors.Add(newDecor);
+            }
 	}
 
 	private void CheckboxOnPressed()

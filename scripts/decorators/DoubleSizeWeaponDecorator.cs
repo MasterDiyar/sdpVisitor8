@@ -5,49 +5,41 @@ using Godot;
 
 namespace finalSDP.scripts.decorators;
 
-public partial class DoubleSizeWeaponDecorator: Node2D
+public partial class DoubleSizeWeaponDecorator: Weapon
 {
-    protected Entity Player;
-    protected Timer timer;
-    private Weapon _weapon;
-
-
-    public Bullet InstantiateBullet(float angle)
-    {
-        var bullet = _weapon.bulletScene.Instantiate<Bullet>();
-        bullet.Angle = new Vector2(Mathf.Cos(angle), Mathf.Sin(angle));
-        bullet.Position = GlobalPosition;
-        return bullet;
-    }
+    public Entity Player;
+    public Timer timer;
     
     public override void _Ready()
     {
+        isDecorator = true;
         _weapon = GetParent<Weapon>();
-        timer = _weapon.GetNode<Timer>("Timer");
+        timer = _weapon.GetTimer();
         timer.Start();
         timer.Timeout += () => { timer.Stop();};
-        Player = _weapon.GetParent<Entity>();
-        Player.OnAttack += Attack;
-        _weapon.OtPiska();
+        Player = _weapon.GetEntity();
+        if (!_weapon.isDecorator)_weapon.OtPiska();
     }
-
-    public virtual bool TimerCheck()
-    {
-        timer ??= GetNode<Timer>("Timer");
-        if (!timer.IsStopped()) return false;
-        timer.Start();
-        return true;
+    public override Bullet InstantiateBullet(float angle) {
+        GD.Print("scale attack");
+        var node = _weapon.InstantiateBullet(angle);
+        node.Scale *= 2;
+        return node;
     }
+         
 
-    public virtual void Attack(float angle = 0)
+    public override bool TimerCheck() => _weapon.TimerCheck();
+    
+
+    public override void Attack(float angle = 0)
     {
         if (!TimerCheck()) return;
         var bullet = InstantiateBullet(angle);
         SpawnWay(bullet);
     }
-    public virtual void SpawnWay(Bullet node)
+    public override void SpawnWay(Bullet node)
     {
-        node.Scale *= 2;
+        
         _weapon.SpawnWay(node);
     }
 }

@@ -6,7 +6,7 @@ using Godot;
 
 namespace finalSDP.scripts.decorators;
 
-public partial class RandomAttackWeaponDecorator: Node2D
+public partial class RandomAttackWeaponDecorator: Weapon
 {
     private string[] _scenes = [
         "arrow",
@@ -19,45 +19,46 @@ public partial class RandomAttackWeaponDecorator: Node2D
         "whatisdad"
     ];
     
-    protected Entity Player;
-    protected Timer timer;
-
-
-    public Bullet InstantiateBullet(float angle)
-    {
-        var rand = GD.RandRange(0, 7);
-        var bullet = GD.Load<PackedScene>($"res://scenes/bullets/{_scenes[rand]}.tscn").Instantiate<Bullet>();
-        bullet.Angle = new Vector2(Mathf.Cos(angle), Mathf.Sin(angle));
-        bullet.Position = GlobalPosition;
-        return bullet;
-    }
+    public Entity Player;
+    public Timer timer;
     
     public override void _Ready()
     {
-        timer = GetParent().GetNode<Timer>("Timer");
+        isDecorator = true;
+        _weapon = GetParent<Weapon>();
+        timer = _weapon.GetTimer();
         timer.Start();
         timer.Timeout += () => { timer.Stop();};
-        Player = GetParent().GetParent<Entity>();
+        Player = _weapon.GetEntity();
         Player.OnAttack += Attack;
+        if (!_weapon.isDecorator)_weapon.OtPiska();
     }
+    
+    public override Bullet InstantiateBullet(float angle)
+     {
+         var rand = GD.RandRange(0, 7);
+         var bullet = GD.Load<PackedScene>($"res://scenes/bullets/{_scenes[rand]}.tscn").Instantiate<Bullet>();
+         bullet.Angle = new Vector2(Mathf.Cos(angle), Mathf.Sin(angle));
+         bullet.Position = GlobalPosition;
+         return bullet;
+     }
 
-    public virtual bool TimerCheck()
+    public override bool TimerCheck()
     {
-        timer ??= GetNode<Timer>("Timer");
-        if (!timer.IsStopped()) return false;
-        timer.Start();
-        return true;
+        return _weapon.TimerCheck();
     }
 
-    public virtual void SpawnWay(Bullet node)
+    public override void SpawnWay(Bullet node)
     {
-        GetTree().Root.AddChild(node);
+        _weapon.SpawnWay(node);
     }
 
-    public virtual void Attack(float angle = 0)
+    public override void Attack(float angle = 0)
     {
         if (!TimerCheck()) return;
         var bullet = InstantiateBullet(angle);
+        SpawnWay(bullet);
+        bullet = _weapon.InstantiateBullet(angle);
         SpawnWay(bullet);
     }
 }

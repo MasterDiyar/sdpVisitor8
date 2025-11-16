@@ -1,6 +1,8 @@
-[gd_scene load_steps=2 format=3 uid="uid://u512bvfvauhb"]
+[gd_scene load_steps=3 format=3 uid="uid://u512bvfvauhb"]
 
 [ext_resource type="Script" uid="uid://bsmogmh0bk1yt" path="res://scripts/decorators/KnockBackWeaponDecorator.cs" id="1_x4bbn"]
+[ext_resource type="PackedScene" uid="uid://vcyiawgjeol5" path="res://scenes/bullets/decorator/knockback_bullet_decorator.tscn" id="2_d4sq6"]
 
 [node name="knock" type="Node2D"]
 script = ExtResource("1_x4bbn")
+KnockbackEffect = ExtResource("2_d4sq6")
