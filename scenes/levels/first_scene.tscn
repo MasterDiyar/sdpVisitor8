@@ -7,7 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://tvtqy2nte426" path="res://scenes/player/player.tscn" id="5_yv2hr"]
 [ext_resource type="PackedScene" uid="uid://is4lhrvij5u" path="res://scenes/player/movement.tscn" id="6_wg3vs"]
 [ext_resource type="PackedScene" uid="uid://ppu4w36e4acc" path="res://enemy_factory.tscn" id="7_l45gw"]
-[ext_resource type="PackedScene" path="res://scenes/entities/bolvanchik.tscn" id="8_dq72s"]
+[ext_resource type="PackedScene" uid="uid://cncljg0fnj2l2" path="res://scenes/entities/bolvanchik.tscn" id="8_dq72s"]
 [ext_resource type="PackedScene" path="res://scenes/entities/aibehavior.tscn" id="9_auhey"]
 
 [node name="first_scene" type="Node2D"]

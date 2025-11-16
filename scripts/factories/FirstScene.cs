@@ -12,9 +12,12 @@ public partial class FirstScene : Node2D
     {
         var factory =  GetNode<UserFactory>("UserFactory");
         var factory2 = GetNode<EnemyFactory>("EnemyFactory");
-        pl = factory.CreateUser();
         bolvanchik = factory2.CreateEnemy();
-        var camera = pl.GetNode<Camera2D>("Camera2D");
+    }
+
+    public void UserLoad()
+    {
+        var camera = GetNode<Camera2D>( "Player/Camera2D");
         camera.LimitLeft = 0;
         camera.LimitRight = 1500;
         camera.LimitTop = 0;
