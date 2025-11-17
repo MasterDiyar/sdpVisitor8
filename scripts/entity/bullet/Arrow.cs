@@ -25,7 +25,7 @@ public partial class Arrow : Bullet
     {
         if (body is not Player && body is Entity entity)
         {
-            entity.TakeDamage(Damage * 60);
+            entity.TakeDamage(Damage);
         }
     }
 }

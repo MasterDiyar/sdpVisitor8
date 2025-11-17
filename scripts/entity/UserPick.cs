@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using finalSDP.scripts.Adapters;
 using finalSDP.scripts.decorators;
 using finalSDP.scripts.entity.enemy;
 using finalSDP.scripts.factories;
@@ -17,6 +18,8 @@ public partial class UserPick : Control
 	private Sprite2D weaponSprite;
 	private Button PlayButton;
 
+	private MovementAdapter mA;
+
 	private int weaponIndex = 0, mobTypeIndex = 0, difficultyIndex = 0;
 	private string[] weaponPath = ["res://assets/bullets/catana.png", "res://assets/player/attack/bow1.png","res://assets/player/attack/poison1.png"],
 		mobTypeName = ["golem", "mushroom", "firy_golem", "bolvanchik", "agis"],
@@ -26,6 +29,7 @@ public partial class UserPick : Control
 	private CheckButton[] decorators;
 	public override void _Ready()
 	{
+		mA = GetNode<MovementAdapter>("/root/MovementAdapter");
 		checkbox = GetNode<CheckBox>("CheckBox");
 		anim = GetNode<AnimatedSprite2D>("AnimatedSprite2D");
 		mobAnim = GetNode<AnimatedSprite2D>("Enemy/AnimatedSprite2D");
@@ -63,6 +67,7 @@ public partial class UserPick : Control
 		{
 			var map = GD.Load<PackedScene>("res://scenes/levels/first_scene.tscn").Instantiate<FirstScene>();
 			user.Material = anim.Material;
+			
 			map.AddChild(user);
 			map.UserLoad();
 			GetParent().AddChild(map);
@@ -88,6 +93,7 @@ public partial class UserPick : Control
 		var givenWeapon = weaponCon[weaponIndex]();
 		user.AddChild(givenWeapon);
 		List<Weapon> decors = [];
+		mA.playerColor = anim.Material;
 		for (int i = 0; i < decorators.Length; i++)
          	if (decorators[i].IsPressed())
             {
@@ -99,6 +105,8 @@ public partial class UserPick : Control
 
 	            decors.Add(newDecor);
             }
+
+		mA.savedWeapon = givenWeapon;
 	}
 
 	private void CheckboxOnPressed()

@@ -1,5 +1,6 @@
 using Godot;
 using System;
+using finalSDP.scripts.Adapters;
 using finalSDP.scripts.entity.player;
 using finalSDP.scripts.visitors;
 
@@ -27,6 +28,10 @@ public partial class HellLevel : Node2D
 
 		la =GetNode<TextLabel>("Player/Camera2D/HpInspector/razgovor");
 		la.StartText(texts[index]);
+		
+		var	mA = GetNode<MovementAdapter>("/root/MovementAdapter");
+		pl.Material = mA.playerColor;
+		pl.AddChild(mA.savedWeapon);
 	}
 
 	public override void _Process(double delta)

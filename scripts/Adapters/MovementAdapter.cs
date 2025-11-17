@@ -1,8 +1,12 @@
 using System;
+using finalSDP.scripts.weapon;
+
 namespace finalSDP.scripts.Adapters;
 using Godot;
 public partial class MovementAdapter : Control
 {
+    public Weapon savedWeapon;
+    public Material playerColor;
     public IDecorator current { get; private set; }
     public InputDevice CurrentDevice;
     private readonly KeyBordAdapter kb = new();
@@ -23,8 +27,6 @@ public partial class MovementAdapter : Control
                 current = kb;
                 GD.Print("KeyBord");
                 break;
-            default:
-                throw new ArgumentOutOfRangeException(nameof(device), device, null);
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿using finalSDP.scripts.entity.player;
+﻿using finalSDP.scripts.Adapters;
+using finalSDP.scripts.entity.player;
 
 namespace finalSDP.scripts.factories;
 using Godot;
@@ -16,5 +17,8 @@ public partial class MountainScene : Node2D
         camera.LimitRight = 3830;
         camera.LimitTop = 0;
         camera.LimitBottom = 1053;
+        var	mA = GetNode<MovementAdapter>("/root/MovementAdapter");
+        pl.Material = mA.playerColor;
+        pl.AddChild(mA.savedWeapon);
     }
 }

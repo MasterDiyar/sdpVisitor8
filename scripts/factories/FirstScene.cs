@@ -48,6 +48,7 @@ public partial class FirstScene : Node2D
         camera.LimitTop = 0;
         camera.LimitBottom = 832;
         pl.MoveToggle();
+        
     }
 
     public override void _Process(double delta)
