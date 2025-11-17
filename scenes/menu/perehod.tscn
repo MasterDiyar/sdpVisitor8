@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=3 uid="uid://nwqw885enblx"]
+
+[ext_resource type="Texture2D" uid="uid://ufc768j3dof" path="res://assets/catfalk.png" id="1_1wnsu"]
+[ext_resource type="Script" uid="uid://c0rmudydrr4d" path="res://scripts/visitors/Perehod.cs" id="1_qj1jh"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qj1jh"]
+size = Vector2(240, 128)
+
+[node name="perehod" type="Area2D"]
+script = ExtResource("1_qj1jh")
+
+[node name="Catfalk" type="Sprite2D" parent="."]
+texture = ExtResource("1_1wnsu")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_qj1jh")

@@ -20,10 +20,12 @@ public partial class Darkpowder : Bullet
 
 	public override void OnBodyHit(Node body)
 	{
-		var bul = GD.Load<PackedScene>("res://scenes/bullets/matterboom.tscn").Instantiate<Bullet>();
-		bul.GlobalPosition = GlobalPosition;
-		GetTree().Root.AddChild(bul);
-		QueueFree();
+		if ( body is Player){
+			var bul = GD.Load<PackedScene>("res://scenes/bullets/matterboom.tscn").Instantiate<Bullet>();
+			bul.GlobalPosition = GlobalPosition;
+			GetTree().Root.CallDeferred("AddChild", bul);
+			QueueFree();
+		}
 	}
 
 	public override void OnTimeout()

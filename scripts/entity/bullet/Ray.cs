@@ -17,7 +17,7 @@ public partial class Ray : Bullet
         dirka = GetNode<Sprite2D>("Blackhole12");
         ten = dirka.GetNode<Sprite2D>("Blackhole13");
         base._Ready();
-        
+        Scale /= 3;
     }
     public override void _Process(double delta)
     {

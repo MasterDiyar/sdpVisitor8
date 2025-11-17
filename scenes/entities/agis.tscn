@@ -224,6 +224,7 @@ animations = [{
 colors = PackedColorArray(0, 0, 0.101961, 1, 1, 1, 1, 1)
 
 [node name="Agis" type="CharacterBody2D"]
+platform_on_leave = 2
 script = ExtResource("1_6dh1i")
 MaxHp = 4000.0
 

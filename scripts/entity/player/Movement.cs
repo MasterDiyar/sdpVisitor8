@@ -9,8 +9,8 @@ public partial class Movement : Node2D
     [Signal] public delegate void OnMoveEventHandler(float delta);
     private float MaxSpeed = 300;
     private float Speed = 200;
-    private float JumpForce = -800;
-    private float Gravity = 980f;
+    public float JumpForce = -300;
+    public float Gravity = 980f;
     private MovementAdapter adapter;
     private InputDevice device;
 

@@ -1,6 +1,7 @@
 using Godot;
 using System;
 using finalSDP.scripts.entity;
+using finalSDP.scripts.entity.bullet;
 using finalSDP.scripts.weapon;
 
 public partial class Firethrowe : Weapon
@@ -11,5 +12,10 @@ public partial class Firethrowe : Weapon
 		var angl =( GetParent().GetParent().GetNode<Entity>("Player").GlobalPosition-GlobalPosition).Angle();
 		var bullet = InstantiateBullet(angl);
 		SpawnWay(bullet);
+	}
+
+	public override void SpawnWay(Bullet node)
+	{
+		GetTree().Root.AddChild(node);
 	}
 }

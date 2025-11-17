@@ -17,6 +17,7 @@ public partial class HellLevel : Node2D
 	{
 		OutOfSceneVisitor sceneVisitor = new OutOfSceneVisitor();
 		pl = GetNode<Player>("Player");
+		pl.GetNode<Movement>("Movement").JumpForce = -440;
 		var camera = pl.GetNode<Camera2D>("Camera2D");
 
 		camera.LimitLeft = 0;
@@ -25,16 +26,12 @@ public partial class HellLevel : Node2D
 		camera.LimitBottom = 825;
 
 		la =GetNode<TextLabel>("Player/Camera2D/HpInspector/razgovor");
-		la.AddText(texts[index]);
+		la.StartText(texts[index]);
 	}
 
 	public override void _Process(double delta)
 	{
-		if (la.Text == texts[index] && index < texts.Length - 1)
-		{
-			la.Text = "";
-			la.AddText(texts[++index]);
-		}
+		
 			
 	}
 }

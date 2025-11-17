@@ -5,34 +5,75 @@ namespace finalSDP.scripts.entity.player;
 
 public partial class TextLabel : Label
 {
-    [Export] private float LPS = 30;
-    private float counter = 0;
-    private string FullText = "";
-    [Export] private ColorRect rect;
-    public void AddText(string text)
+    [Export] private float LPS = 30f; 
+    private float _timeSinceLastChar = 0f; 
+    private string _fullText = "";
+    private int _charIndex = 0; 
+    [Export] private ColorRect _rect; 
+    public Action TextFinished; 
+    private bool _isPrinting = false;
+    public void StartText(string text)
     {
-        rect.Visible = true;
+        _fullText = text;
+        _charIndex = 0; 
+        Text = "";      
+        _isPrinting = true;
+        
+        if (_rect != null) _rect.Visible = true;
         Visible = true;
-        FullText = text;
     }
 
     public override void _Process(double delta)
     {
-        counter += (float)delta;
-        if (counter >= 1/LPS) {
-            counter = 0;
-            try {
-                if (Text != FullText)
-                    Text += FullText[Text.Length];
-            } catch (IndexOutOfRangeException) { }
+        HandleInput();
+
+        if (!_isPrinting)
+            return;
+
+        _timeSinceLastChar += (float)delta;
+        float timePerChar = 1f / LPS; 
+
+        if (_timeSinceLastChar >= timePerChar)
+        {
+            _timeSinceLastChar -= timePerChar; 
+            
+            if (_charIndex < _fullText.Length)
+            {
+                Text += _fullText[_charIndex];
+                _charIndex++;
+                
+                if (_charIndex >= _fullText.Length)
+                {
+                    FinishPrinting();
+                }
+            }
         }
-        if (Input.IsActionJustPressed("space") && Text != "")
-            Text = FullText;
+    }
+    
+    private void HandleInput()
+    {
+        if (_isPrinting && Input.IsActionJustPressed("space"))
+        {
+            Text = _fullText; 
+            FinishPrinting();
+            return;
+        }
+
         if (Input.IsActionJustPressed("esc"))
         {
-            Text = "";
-            rect.Visible = false;
-            Visible = false;
+            HideText();
         }
+    }
+    private void FinishPrinting()
+    {
+        _isPrinting = false;
+        TextFinished?.Invoke(); 
+    }
+    public void HideText()
+    {
+        _isPrinting = false;
+        Text = "";
+        if (_rect != null) _rect.Visible = false;
+        Visible = false;
     }
 }

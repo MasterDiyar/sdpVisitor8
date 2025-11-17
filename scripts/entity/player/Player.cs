@@ -12,5 +12,11 @@ public partial class Player : Entity
         if (Hp <= 0) GetTree().ChangeSceneToPacked(GD.Load<PackedScene>("res://main.tscn"));
         
     }
+
+    public void MoveToggle()
+    {
+        var mov = GetNode<Movement>("Movement");
+        mov.ProcessMode=(mov.GetProcessMode()==ProcessModeEnum.Inherit)? ProcessModeEnum.Disabled: ProcessModeEnum.Inherit;
+    }
     
 }
