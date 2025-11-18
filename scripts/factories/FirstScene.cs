@@ -44,7 +44,7 @@ public partial class FirstScene : Node2D
         playerText.TextFinished += TextEnded;
         playerText.StartText(Texts[index]);
         camera.LimitLeft = 0;
-        camera.LimitRight = 4032;
+        camera.LimitRight = 3000;
         camera.LimitTop = 0;
         camera.LimitBottom = 832;
         pl.MoveToggle();

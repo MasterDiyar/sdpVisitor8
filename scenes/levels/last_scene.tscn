@@ -1,0 +1,52 @@
+[gd_scene load_steps=8 format=3 uid="uid://cyna6ldbopkt5"]
+
+[ext_resource type="Texture2D" uid="uid://00fl3v50ainu" path="res://assets/bg/photo_1_2025-11-06_21-16-45.jpg" id="1_5f16g"]
+[ext_resource type="Shader" uid="uid://dlhhct262jfyi" path="res://scenes/levels/chB.gdshader" id="1_037df"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_rpyl7"]
+shader = ExtResource("1_037df")
+shader_parameter/mix_amount = 0.77
+shader_parameter/use_threshold = false
+shader_parameter/threshold = 0.5
+shader_parameter/lum_coeffs = Vector3(0.2126, 0.7152, 0.0722)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_037df"]
+size = Vector2(3336, 345)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rpyl7"]
+size = Vector2(152, 916)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_eoph7"]
+size = Vector2(3337, 345)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_f50sx"]
+size = Vector2(152, 916)
+
+[node name="last_scene" type="Node2D"]
+modulate = Color(0.703808, 0.703808, 0.703808, 1)
+
+[node name="Photo12025-11-0621-16-45" type="Sprite2D" parent="."]
+texture_filter = 3
+material = SubResource("ShaderMaterial_rpyl7")
+position = Vector2(-1, -186)
+scale = Vector2(2.36953, 1.75556)
+texture = ExtResource("1_5f16g")
+centered = false
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(1515, 902.5)
+shape = SubResource("RectangleShape2D_037df")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(-77, 272)
+shape = SubResource("RectangleShape2D_rpyl7")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(1515.5, -359)
+shape = SubResource("RectangleShape2D_eoph7")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(3108, 272)
+shape = SubResource("RectangleShape2D_f50sx")
