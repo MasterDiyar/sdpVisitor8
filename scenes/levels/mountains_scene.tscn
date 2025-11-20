@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=4 uid="uid://dyp4lrn8onqg5"]
+[gd_scene load_steps=10 format=4 uid="uid://dyp4lrn8onqg5"]
 
 [ext_resource type="Script" uid="uid://enqbgy7mh0ds" path="res://scripts/factories/MountainScene.cs" id="1_735mp"]
 [ext_resource type="PackedScene" uid="uid://cpijean2ogpyu" path="res://scenes/levels/bg_for_main_menu.tscn" id="2_hskcx"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://crfomrhrfc2ll" path="res://scenes/entities/golem.tscn" id="6_ks0s0"]
 [ext_resource type="PackedScene" uid="uid://nwqw885enblx" path="res://scenes/menu/perehod.tscn" id="7_5lncd"]
 [ext_resource type="PackedScene" uid="uid://ckcbsm5mx2iqo" path="res://scenes/levels/hell_level.tscn" id="8_gg6wp"]
+[ext_resource type="PackedScene" uid="uid://d3jex6xt2dkc3" path="res://scenes/player/text_option.tscn" id="9_gg6wp"]
 
 [node name="mountains_scene" type="Node2D"]
 script = ExtResource("1_735mp")
@@ -31,3 +32,6 @@ position = Vector2(3670, 865)
 Deleter = NodePath("..")
 Adder = ExtResource("8_gg6wp")
 JustCome = true
+
+[node name="TextOption" parent="." node_paths=PackedStringArray("parentLevel") instance=ExtResource("9_gg6wp")]
+parentLevel = NodePath("..")

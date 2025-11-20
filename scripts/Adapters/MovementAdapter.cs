@@ -29,4 +29,10 @@ public partial class MovementAdapter : Control
                 break;
         }
     }
+
+    public void LoadChild(Weapon w)
+    {
+        AddChild(w);
+        savedWeapon = w;
+    }
 }

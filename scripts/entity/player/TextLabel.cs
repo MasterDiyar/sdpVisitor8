@@ -43,9 +43,8 @@ public partial class TextLabel : Label
                 _charIndex++;
                 
                 if (_charIndex >= _fullText.Length)
-                {
                     FinishPrinting();
-                }
+                
             }
         }
     }

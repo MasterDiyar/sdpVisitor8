@@ -4,17 +4,15 @@ using finalSDP.scripts.entity.enemy;
 
 namespace finalSDP.scripts.factories;
 using Godot;
-public partial class FirstScene : Node2D
+public partial class FirstScene : LevelBase
 {
-    private Player pl;
-    private Bolvanchik bolvanchik;
-    TextLabel playerText;
+    TextOption textOption;
     private AnimatedSprite2D agis;
     
     private int index = 0;
     private bool tend = false;
 
-    private string[] Texts =
+    public override string[] Texts { get; set; } =
     [
         "Where am I?",
         "Who am I?",
@@ -28,61 +26,49 @@ public partial class FirstScene : Node2D
         "And if I win, will you return everything back?",
         "WE WILL SEE..."
     ];
-
-    public override void _Ready()
+    
+    protected override void OnLevelLoaded()
     {
         agis = GetNode<AnimatedSprite2D>("AnimatedSprite2D");
         agis.Play();
-        var factory =  GetNode<UserFactory>("UserFactory");
+        Player.MoveToggle();
+        textOption = GetNode<TextOption>("TextOption");
+        textOption.NextText += Newator;
     }
 
-    public void UserLoad()
+    protected override void ConfigureCamera()
     {
-        pl = GetNode<Player>("Player");
-        var camera = GetNode<Camera2D>( "Player/Camera2D");
-        playerText = GetNode<TextLabel>("Player/Camera2D/HpInspector/razgovor");
-        playerText.TextFinished += TextEnded;
-        playerText.StartText(Texts[index]);
-        camera.LimitLeft = 0;
-        camera.LimitRight = 3000;
-        camera.LimitTop = 0;
-        camera.LimitBottom = 832;
-        pl.MoveToggle();
-        
+        Camera.LimitLeft = 0;
+        Camera.LimitRight = 3000;
+        Camera.LimitTop = 0;
+        Camera.LimitBottom = 832;
     }
-
     public override void _Process(double delta)
     {
         base._Process(delta);
-
-        if (Input.IsActionJustPressed("space") && tend) {
-            Newator();
-            tend = false;
+        if (index >= 10)
+        {
+            agis.Modulate = new Color(agis.Modulate, agis.Modulate.A - (float)delta);
+            agis.Position += new Vector2(0, -5);
+            agis.Scale += (float)delta*Vector2.One;
         }
-        
-        if (index == 10)
-            agis.Modulate = new Color(agis.Modulate, agis.Modulate.A-(float)delta);
     }
 
-    private void TextEnded()
-    {
-        tend = true;
-    }
     private void Newator()
     {
         index++;
-        try{
-            playerText.StartText(Texts[index]);
-        }catch(IndexOutOfRangeException){}
 
-        if (index == 3)
-            agis.Visible = true;
-        
-        if (index == 4)
-            pl.MoveToggle();
-        
-        if (index == 11)
-            playerText.HideText();
-            
+        switch (index)
+        {
+            case 3:
+                agis.Visible = true;
+                break;
+            case 4:
+                Player.MoveToggle();
+                break;
+            case 11:
+                textOption.playerText.HideText();
+                break;
+        }
     }
 }

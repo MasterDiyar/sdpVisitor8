@@ -1,10 +1,12 @@
-[gd_scene load_steps=6 format=4 uid="uid://ckcbsm5mx2iqo"]
+[gd_scene load_steps=8 format=4 uid="uid://ckcbsm5mx2iqo"]
 
 [ext_resource type="Script" uid="uid://cuh4kfc8kuiyv" path="res://scripts/factories/HellLevel.cs" id="1_l0soq"]
 [ext_resource type="Texture2D" uid="uid://btucf6a54i8c" path="res://assets/bg/photo_2_2025-11-06_21-16-45.jpg" id="1_xch0t"]
 [ext_resource type="PackedScene" uid="uid://dnth0m3nh4dy2" path="res://scenes/levels/tiles.tscn" id="3_fgdhi"]
 [ext_resource type="PackedScene" uid="uid://ccfpgs4ueslxa" path="res://scenes/entities/firy_golem.tscn" id="4_l0soq"]
 [ext_resource type="PackedScene" uid="uid://tvtqy2nte426" path="res://scenes/player/player.tscn" id="4_ouk6x"]
+[ext_resource type="PackedScene" uid="uid://nwqw885enblx" path="res://scenes/menu/perehod.tscn" id="6_ouk6x"]
+[ext_resource type="PackedScene" uid="uid://d3jex6xt2dkc3" path="res://scenes/player/text_option.tscn" id="7_uv6kt"]
 
 [node name="hellLevel" type="Node2D"]
 texture_filter = 3
@@ -35,3 +37,10 @@ scale = Vector2(3.5, 3.5)
 
 [node name="Player" parent="." instance=ExtResource("4_ouk6x")]
 position = Vector2(127, 69)
+
+[node name="perehod" parent="." node_paths=PackedStringArray("Deleter") instance=ExtResource("6_ouk6x")]
+position = Vector2(2440, 666)
+Deleter = NodePath("..")
+
+[node name="TextOption" parent="." node_paths=PackedStringArray("parentLevel") instance=ExtResource("7_uv6kt")]
+parentLevel = NodePath("..")

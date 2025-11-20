@@ -78,5 +78,12 @@ public partial class Weapon : Node2D
     {
         return isDecorator ? _weapon.GetEntity() : Player;
     }
+
+    public void ReSubscribe()
+    {
+        Position = new Vector2(0, 0);
+        Player = GetParent<Entity>();
+        Player.OnAttack += Attack;
+    }
     
 }

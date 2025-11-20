@@ -1,6 +1,7 @@
 using Godot;
 using System;
 using finalSDP.scripts.entity.bullet;
+using finalSDP.scripts.entity.player;
 
 public partial class Whatisdad : Bullet
 {
@@ -20,5 +21,13 @@ public partial class Whatisdad : Bullet
 		Position += Velocity ;
 		
 		if (Speed < 0) QueueFree();
+	}
+	
+	public override void OnBodyHit(Node body)
+	{
+		if (body is Player entity)
+		{
+			entity.TakeDamage(Damage);
+		}
 	}
 }

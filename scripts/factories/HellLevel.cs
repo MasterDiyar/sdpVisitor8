@@ -2,41 +2,46 @@ using Godot;
 using System;
 using finalSDP.scripts.Adapters;
 using finalSDP.scripts.entity.player;
+using finalSDP.scripts.factories;
 using finalSDP.scripts.visitors;
 
-public partial class HellLevel : Node2D
+public partial class HellLevel : LevelBase
 {
-	private Player pl;
-	private TextLabel la;
 	private int index = 0;
-	private string[] texts = ["Hello my dear gayman i am your shugar daddy:)\n but im not gay. Yall should now about that",
-		"RegularCustomerDiscount, MemberCustomerDiscount, PremiumCustomerDiscount (Concrete Strategies):\nThese classes implement IDiscountStrategy and provide specific implementations for calculating discounts based on different customer types.",
-	"ShoppingCart (Context Class):\nThis class holds a reference to the IDiscountStrategy interface. It delegates the discount calculation to the currently assigned strategy. The SetDiscountStrategy method allows changing the strategy at runtime.",
-	"Program (Client Usage):\nThe client code creates ShoppingCart instances, injecting the desired IDiscountStrategy at creation or dynamically changing it later, demonstrating the flexibility of the pattern."
+	TextOption textOption;
+	public override string[] Texts { get; set; } = [
+		"I am in hell before my death.",
+		"Can i call myself as alive?",
+		"Well, as Rene Descartes once said, \"I think, therefore i am.\"",
+		"I need to kill fire keepers for come back to the bloody island."
+		,"And defeat the God of Darkness...",
+		"..."
 	];
-	public override void _Ready()
+
+	protected override void OnLevelLoaded()
 	{
-		OutOfSceneVisitor sceneVisitor = new OutOfSceneVisitor();
-		pl = GetNode<Player>("Player");
-		pl.GetNode<Movement>("Movement").JumpForce = -440;
-		var camera = pl.GetNode<Camera2D>("Camera2D");
-
-		camera.LimitLeft = 0;
-		camera.LimitRight = 2550;
-		camera.LimitTop = 0;
-		camera.LimitBottom = 825;
-
-		la =GetNode<TextLabel>("Player/Camera2D/HpInspector/razgovor");
-		la.StartText(texts[index]);
-		
-		var	mA = GetNode<MovementAdapter>("/root/MovementAdapter");
-		pl.Material = mA.playerColor;
-		pl.AddChild(mA.savedWeapon);
+		Player.GetNode<Movement>("Movement").JumpForce = -440;
+		textOption = GetNode<TextOption>("TextOption");
+		textOption.NextText += Newator;
 	}
 
-	public override void _Process(double delta)
+	protected override void ConfigureCamera()
 	{
-		
-			
+		Camera.LimitLeft = 0;
+        Camera.LimitRight = 2550;
+        Camera.LimitTop = 0;
+        Camera.LimitBottom = 825;
 	}
+
+	private void Newator()
+	{
+		index++;
+
+		if (index == 5)
+		{
+			Player.MoveToggle();
+			textOption.playerText.HideText();
+		}
+	}
+	
 }

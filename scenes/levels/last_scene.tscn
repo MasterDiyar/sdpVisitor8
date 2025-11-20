@@ -1,7 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://cyna6ldbopkt5"]
+[gd_scene load_steps=10 format=3 uid="uid://cyna6ldbopkt5"]
 
 [ext_resource type="Texture2D" uid="uid://00fl3v50ainu" path="res://assets/bg/photo_1_2025-11-06_21-16-45.jpg" id="1_5f16g"]
 [ext_resource type="Shader" uid="uid://dlhhct262jfyi" path="res://scenes/levels/chB.gdshader" id="1_037df"]
+[ext_resource type="PackedScene" uid="uid://by714pym3uk0l" path="res://scenes/entities/agis.tscn" id="3_rpyl7"]
+[ext_resource type="PackedScene" uid="uid://d3jex6xt2dkc3" path="res://scenes/player/text_option.tscn" id="4_eoph7"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_rpyl7"]
 shader = ExtResource("1_037df")
@@ -34,6 +36,7 @@ texture = ExtResource("1_5f16g")
 centered = false
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
+visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
 position = Vector2(1515, 902.5)
@@ -50,3 +53,10 @@ shape = SubResource("RectangleShape2D_eoph7")
 [node name="CollisionShape2D4" type="CollisionShape2D" parent="StaticBody2D"]
 position = Vector2(3108, 272)
 shape = SubResource("RectangleShape2D_f50sx")
+
+[node name="Agis" parent="." instance=ExtResource("3_rpyl7")]
+position = Vector2(2062, 173)
+scale = Vector2(3, 3)
+
+[node name="TextOption" parent="Agis" node_paths=PackedStringArray("parentLevel") instance=ExtResource("4_eoph7")]
+parentLevel = NodePath("../..")

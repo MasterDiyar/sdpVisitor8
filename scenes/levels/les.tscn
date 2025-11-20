@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=4 uid="uid://dqnqaspcxjyhi"]
+[gd_scene load_steps=11 format=4 uid="uid://dqnqaspcxjyhi"]
 
 [ext_resource type="Script" uid="uid://bsamw1ymir0wo" path="res://scripts/factories/ForestLevel.cs" id="1_sgfg8"]
 [ext_resource type="Texture2D" uid="uid://v3qhc7cghwsx" path="res://assets/bg/photo_2025-11-06_21-16-37.jpg" id="2_gebpc"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://dvmxdapmbrifb" path="res://scenes/entities/mushroom.tscn" id="6_gebpc"]
 [ext_resource type="PackedScene" uid="uid://nwqw885enblx" path="res://scenes/menu/perehod.tscn" id="7_5pugt"]
 [ext_resource type="PackedScene" uid="uid://dyp4lrn8onqg5" path="res://scenes/levels/mountains_scene.tscn" id="8_lseyo"]
+[ext_resource type="PackedScene" uid="uid://d3jex6xt2dkc3" path="res://scenes/player/text_option.tscn" id="9_yllwu"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_sgfg8"]
 size = Vector2(99.8109, 107.521)
@@ -52,3 +53,6 @@ scale = Vector2(0.5, 0.5)
 skew = 0.272271
 Deleter = NodePath("..")
 Adder = ExtResource("8_lseyo")
+
+[node name="TextOption" parent="." node_paths=PackedStringArray("parentLevel") instance=ExtResource("9_yllwu")]
+parentLevel = NodePath("..")

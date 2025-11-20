@@ -1,5 +1,6 @@
 using Godot;
 using System;
+using finalSDP.scripts.entity.player;
 
 public partial class Perehod : Area2D
 {
@@ -31,6 +32,7 @@ public partial class Perehod : Area2D
 
 	private void OnBodyEntered(Node2D body)
 	{
+		if (body is not Player) return;
 		if (JustCome)
 			Prohod();
 		else

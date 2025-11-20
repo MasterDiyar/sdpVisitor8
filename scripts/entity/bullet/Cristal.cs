@@ -14,6 +14,7 @@ public partial class Cristal : Bullet
     
     public override void _Process(double delta)
     {
+        base._Process(delta);
         Speed -= (float)delta * 2.5f;
         Velocity = Angle.Normalized() * Speed;
 		Rotation = Angle.Angle();

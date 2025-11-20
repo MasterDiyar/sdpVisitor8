@@ -35,13 +35,15 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dxxgj"]
-size = Vector2(54, 21)
+size = Vector2(53.6667, 38.1667)
 
 [node name="earthblow" type="Area2D"]
 texture_filter = 3
 script = ExtResource("1_dn1oj")
+Damage = 35.0
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(-21, -63)
 scale = Vector2(3, 3)
 sprite_frames = SubResource("SpriteFrames_o0idv")
 frame = 5
@@ -50,6 +52,6 @@ frame_progress = 1.0
 [node name="Timer" type="Timer" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(21, 63)
+position = Vector2(-8.5, -25.75)
 scale = Vector2(3, 3)
 shape = SubResource("RectangleShape2D_dxxgj")

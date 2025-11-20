@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://tvtqy2nte426"]
+[gd_scene load_steps=11 format=3 uid="uid://tvtqy2nte426"]
 
 [ext_resource type="PackedScene" uid="uid://cdp1h5qeh27ma" path="res://scenes/player/player_animation.tscn" id="1_dovo2"]
 [ext_resource type="Script" uid="uid://b6n6pxmin0ry5" path="res://scripts/entity/player/Player.cs" id="1_gmlin"]
@@ -6,7 +6,6 @@
 [ext_resource type="PackedScene" uid="uid://is4lhrvij5u" path="res://scenes/player/movement.tscn" id="4_lvxji"]
 [ext_resource type="Script" uid="uid://b48i4wq02aolu" path="res://scripts/entity/player/HpInspector.cs" id="5_0owmy"]
 [ext_resource type="FontFile" uid="uid://btsoui3utd6pf" path="res://assets/antiquity-print(1).ttf" id="5_75vfm"]
-[ext_resource type="Shader" uid="uid://b4c7h3p4pk1rm" path="res://scenes/player/razgar.gdshader" id="7_5gtgg"]
 [ext_resource type="Script" uid="uid://c25n63gwwvw6n" path="res://scripts/entity/player/TextLabel.cs" id="7_qek5x"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_p47bc"]
@@ -15,18 +14,6 @@ size = Vector2(35, 59)
 [sub_resource type="LabelSettings" id="LabelSettings_0owmy"]
 font = ExtResource("5_75vfm")
 font_size = 52
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_qek5x"]
-shader = ExtResource("7_5gtgg")
-shader_parameter/dot_density = Vector2(128, 128)
-shader_parameter/dot_size = 0.681
-shader_parameter/edge_softness = 0.0
-shader_parameter/brightness_variation = 0.0
-shader_parameter/brightness_threshold = 0.0
-shader_parameter/rotation_angle = 0.0
-shader_parameter/blend_mode = true
-shader_parameter/color1 = Color(0, 0, 0, 0)
-shader_parameter/color2 = Color(1, 1, 1, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_qek5x"]
 font = ExtResource("5_75vfm")
@@ -85,6 +72,7 @@ text = "Hp:10"
 label_settings = SubResource("LabelSettings_0owmy")
 
 [node name="ColorRect" type="ColorRect" parent="Camera2D/HpInspector"]
+modulate = Color(1, 1, 1, 0.796078)
 offset_left = 52.0
 offset_top = 312.0
 offset_right = 892.0
@@ -93,7 +81,6 @@ color = Color(0.88, 0.75372, 0.5192, 1)
 
 [node name="razgovor" type="Label" parent="Camera2D/HpInspector" node_paths=PackedStringArray("_rect")]
 texture_filter = 3
-material = SubResource("ShaderMaterial_qek5x")
 offset_left = 53.5
 offset_top = 312.5
 offset_right = 1727.5

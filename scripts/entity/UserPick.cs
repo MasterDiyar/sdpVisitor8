@@ -61,20 +61,28 @@ public partial class UserPick : Control
 		};
 
 		var decoratorFact = weapondeco.Select(GD.Load<PackedScene>).ToArray();
-		
+		var givenWeapon = weaponCon[weaponIndex]();
+        		List<Weapon> decors = [];
+        		mA.playerColor = anim.Material;
+        		for (int i = 0; i < decorators.Length; i++)
+                 	if (decorators[i].IsPressed())
+                    {
+        	            var newDecor = decoratorFact[i].Instantiate<Weapon>();
+        	            if (decors.Count == 0)
+        		            givenWeapon.AddChild(newDecor);
+        	            else
+        		            decors[^1].AddChild(newDecor);
+        
+        	            decors.Add(newDecor);
+                    }
+        		mA.savedWeapon = givenWeapon;
 		var user = UserFactory.CreatePlayer(new Vector2(54, 644));
-		if (checkbox.ButtonPressed)
-		{
+		
+		if (checkbox.ButtonPressed) {
 			var map = GD.Load<PackedScene>("res://scenes/levels/first_scene.tscn").Instantiate<FirstScene>();
-			user.Material = anim.Material;
-			
-			map.AddChild(user);
-			map.UserLoad();
 			GetParent().AddChild(map);
 			QueueFree();
-		}
-		else
-		{
+		}else {
 			user = UserFactory.CreatePlayer(new Vector2(54, -344));
 			var map = GD.Load<PackedScene>("res://scenes/levels/level.tscn").Instantiate<Node2D>();
 			user.Material = anim.Material;
@@ -85,28 +93,12 @@ public partial class UserPick : Control
 			
 			map.AddChild(user);
 			map.AddChild(mob);
-			
+			user.AddChild(givenWeapon);
 			
 			GetParent().AddChild(map);
 			QueueFree();
 		}
-		var givenWeapon = weaponCon[weaponIndex]();
-		user.AddChild(givenWeapon);
-		List<Weapon> decors = [];
-		mA.playerColor = anim.Material;
-		for (int i = 0; i < decorators.Length; i++)
-         	if (decorators[i].IsPressed())
-            {
-	            var newDecor = decoratorFact[i].Instantiate<Weapon>();
-	            if (decors.Count == 0)
-		            givenWeapon.AddChild(newDecor);
-	            else
-		            decors[^1].AddChild(newDecor);
-
-	            decors.Add(newDecor);
-            }
-
-		mA.savedWeapon = givenWeapon;
+		
 	}
 
 	private void CheckboxOnPressed()

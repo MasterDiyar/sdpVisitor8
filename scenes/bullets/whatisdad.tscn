@@ -8,6 +8,7 @@
 [node name="what" type="Area2D"]
 texture_filter = 3
 script = ExtResource("1_66ubh")
+Damage = 10.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_66ubh")

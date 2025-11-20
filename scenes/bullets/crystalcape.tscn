@@ -48,9 +48,11 @@ animations = [{
 [node name="crystalcape" type="Area2D"]
 texture_filter = 3
 script = ExtResource("1_ljnw7")
+Damage = 40.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 24)
+scale = Vector2(0.1, 1)
 shape = SubResource("RectangleShape2D_ik31k")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
