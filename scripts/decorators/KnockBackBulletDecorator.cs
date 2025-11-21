@@ -11,7 +11,6 @@ public partial class KnockBackBulletDecorator: Node2D
     public override void _Ready()
     {
         _bullet = GetParent<Bullet>();
-        _bullet.OtPiska();
         _bullet.BodyEntered += OnBodyHit;
     }
 
@@ -19,7 +18,6 @@ public partial class KnockBackBulletDecorator: Node2D
     {
         if (body is not Player and Entity entity)
         {
-            entity.TakeDamage(_bullet.Damage);
             entity.Velocity += Vector2.Up * 400;
             entity.MoveAndSlide();
             QueueFree();

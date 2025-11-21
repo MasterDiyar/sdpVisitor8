@@ -12,6 +12,21 @@ public partial class Agis : Entity
 		sprite.Play();
 		Speed = 4800;
 		Gravity = 1f;
+		var t = GetNode<Timer>("Timer");
+		t.Start();
+		t.WaitTime = 5;
+		t.Timeout += TOnTimeout;
+	}
+
+	private void TOnTimeout()
+	{
+		var chld =GD.Load<PackedScene>("res://scenes/levels/hand.tscn");
+		for (int i = 4; i >= 0; i--)
+		{
+			var hand = chld.Instantiate<Hand>();
+			hand.Position = GlobalPosition;
+			GetParent().CallDeferred("add_child", hand);
+		}
 	}
 
 	public override void _PhysicsProcess(double delta)

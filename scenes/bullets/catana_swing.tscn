@@ -35,14 +35,13 @@ animations = [{
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_gkrpv"]
-radius = 128.0
+radius = 64.0
 
 [node name="CatanaSwing" type="Area2D"]
 script = ExtResource("1_am6x1")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 3
-scale = Vector2(2, 2)
 skew = 0.628319
 sprite_frames = SubResource("SpriteFrames_jmxrl")
 

@@ -27,7 +27,6 @@ public partial class MountainScene : LevelBase
     protected override void OnLevelLoaded()
     {
         Player.MoveToggle();
-        Player.GetNode<Movement>("Movement").JumpForce = -440;
         textOption = GetNode<TextOption>("TextOption");
         textOption.NextText += () => {if(++index > 5){Player.MoveToggle();textOption.playerText.HideText();} } ;
         

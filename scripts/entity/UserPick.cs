@@ -59,25 +59,11 @@ public partial class UserPick : Control
 			WeaponFactory.CreateBow,
 			WeaponFactory.CreateSpray
 		};
-
-		var decoratorFact = weapondeco.Select(GD.Load<PackedScene>).ToArray();
 		var givenWeapon = weaponCon[weaponIndex]();
-        		List<Weapon> decors = [];
-        		mA.playerColor = anim.Material;
-        		for (int i = 0; i < decorators.Length; i++)
-                 	if (decorators[i].IsPressed())
-                    {
-        	            var newDecor = decoratorFact[i].Instantiate<Weapon>();
-        	            if (decors.Count == 0)
-        		            givenWeapon.AddChild(newDecor);
-        	            else
-        		            decors[^1].AddChild(newDecor);
-        
-        	            decors.Add(newDecor);
-                    }
-        		mA.savedWeapon = givenWeapon;
-		var user = UserFactory.CreatePlayer(new Vector2(54, 644));
+		var decoratorFact = weapondeco.Select(GD.Load<PackedScene>).ToArray();
 		
+		var user = UserFactory.CreatePlayer(new Vector2(54, 644));
+		mA.savedWeapon = givenWeapon;
 		if (checkbox.ButtonPressed) {
 			var map = GD.Load<PackedScene>("res://scenes/levels/first_scene.tscn").Instantiate<FirstScene>();
 			GetParent().AddChild(map);
@@ -98,6 +84,21 @@ public partial class UserPick : Control
 			GetParent().AddChild(map);
 			QueueFree();
 		}
+		
+        List<Weapon> decors = [];
+        mA.playerColor = anim.Material;
+        for (int i = 0; i < decorators.Length; i++)
+            if (decorators[i].IsPressed())
+            {
+                var newDecor = decoratorFact[i].Instantiate<Weapon>();
+                if (decors.Count == 0)
+                    givenWeapon.AddChild(newDecor);
+                else
+                    decors[^1].AddChild(newDecor);
+ 
+                decors.Add(newDecor);
+			}
+        mA.savedWeapon = givenWeapon;
 		
 	}
 

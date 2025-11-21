@@ -14,7 +14,7 @@ public partial class PoisonousAttackWeaponDecorator: Weapon
     {
         isDecorator = true;
         _weapon = GetParent<Weapon>();
-        timer = _weapon.GetTimer();
+        timer = (_weapon.GetTimer() is null) ? _weapon.GetNode<Timer>("Timer") : _weapon.GetTimer();
         timer.Start();
         timer.Timeout += () => { timer.Stop();};
         Player = _weapon.GetEntity();

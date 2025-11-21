@@ -10,6 +10,7 @@ bulletScene = ExtResource("2_sevy0")
 
 [node name="Catana" type="Sprite2D" parent="."]
 texture_filter = 3
+scale = Vector2(0.76, 0.76)
 texture = ExtResource("1_vcim6")
 offset = Vector2(40, -40)
 

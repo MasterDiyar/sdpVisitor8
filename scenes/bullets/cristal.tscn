@@ -32,5 +32,6 @@ emission_shape = 1
 emission_sphere_radius = 22.98
 orbit_velocity_min = -1.0
 orbit_velocity_max = 1.0
+scale_amount_max = 5.0
 color = Color(0.564706, 0.847059, 1, 1)
 color_ramp = SubResource("Gradient_avwpw")

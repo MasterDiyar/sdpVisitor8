@@ -17,7 +17,7 @@ public partial class Catana : Weapon
 
 	public override void _Process(double delta)
 	{
-		sprite.Scale=    new Vector2(GetGlobalMousePosition().X < GlobalPosition.X ?-1 : 1, 1);
+		sprite.Scale=    new Vector2(GetGlobalMousePosition().X < GlobalPosition.X ?-1 : 1, 1)* .76f;
 	}
 
 	public override bool TimerCheck()
@@ -26,12 +26,12 @@ public partial class Catana : Weapon
 		float downAngle;
 		try
 		{
-			 downAngle = (sprite.Scale.X == -1) ? Mathf.DegToRad(-60) : Mathf.DegToRad(60);
+			 downAngle = (sprite.Scale.X < 0) ? Mathf.DegToRad(-60) : Mathf.DegToRad(60);
 		}
 		catch (NullReferenceException)
 		{
 			sprite = GetNodeOrNull<Sprite2D>("Catana");
-			downAngle = (sprite.Scale.X == -1) ? Mathf.DegToRad(-60) : Mathf.DegToRad(60);
+			downAngle = (sprite.Scale.X < 0) ? Mathf.DegToRad(-60) : Mathf.DegToRad(60);
 		}
                           		
         attacking = true;
@@ -44,7 +44,7 @@ public partial class Catana : Weapon
         tween.Parallel().TweenProperty(this, "rotation", downAngle, 0.15f)
             .SetTrans(Tween.TransitionType.Quad)
             .SetEase(Tween.EaseType.Out);
-        tween.Parallel().TweenProperty(this, "position", Position + new Vector2(sprite.Scale.X==-1 ? -60 : 60, 0), 0.15f)
+        tween.Parallel().TweenProperty(this, "position", Position + new Vector2(sprite.Scale.X < 0 ? -60 : 60, 0), 0.15f)
             .SetTrans(Tween.TransitionType.Quad)
             .SetEase(Tween.EaseType.Out);
         tween.TweenInterval(0.1f);
@@ -63,7 +63,9 @@ public partial class Catana : Weapon
 
 	public override void SpawnWay(Bullet node)
 	{
-		node.Position = GlobalPosition + 100 * node.Angle;
+		Player.Position += sprite.Scale.X * Vector2.Right * 20;
+		node.Position = GlobalPosition + 76 * node.Angle;
+		node.GetNode<AnimatedSprite2D>("AnimatedSprite2D").FlipH = sprite.Scale.X < 0;
 		base.SpawnWay(node);	
 	}
 	

@@ -26,7 +26,7 @@ public partial class Crystalcape : Bullet
 	public override void OnBodyHit(Node body)
 	{
 		if (body is Player entity)  {
-			entity.TakeDamage(Damage);
+			entity.TakeDamage(Damage * collision.Scale.X);
 			QueueFree();
 		}
 	}

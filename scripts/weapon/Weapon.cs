@@ -39,6 +39,7 @@ public partial class Weapon : Node2D
         var bullet = bulletScene.Instantiate<Bullet>();
         bullet.Angle = new Vector2(Mathf.Cos(angle), Mathf.Sin(angle));
         bullet.Position = GlobalPosition;
+        bullet.Damage += Damage;
         return bullet;
     }
 
@@ -82,8 +83,24 @@ public partial class Weapon : Node2D
     public void ReSubscribe()
     {
         Position = new Vector2(0, 0);
-        Player = GetParent<Entity>();
-        Player.OnAttack += Attack;
+        Player = (!isDecorator) ? GetParent<Entity>() : GetEntity();
+        if (!isDecorator)OtPiska();
+        else Player.OnAttack += Attack;
+        var hasDeco = false;
+        foreach (var cild in GetChildren())
+        {
+            if (cild is Weapon pl)
+            {
+                hasDeco = true;
+                GD.Print("ReSubscribing childs");
+                pl.ReSubscribe();
+            }
+        }
+        if (!hasDeco)
+        {
+            GD.Print("no decorator");
+            Player.OnAttack += Attack;
+        }
     }
     
 }

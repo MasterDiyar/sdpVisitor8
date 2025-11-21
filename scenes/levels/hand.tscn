@@ -1,0 +1,69 @@
+[gd_scene load_steps=12 format=3 uid="uid://dt82vadtjx7xn"]
+
+[ext_resource type="Texture2D" uid="uid://c0xfp5s3q0yfr" path="res://assets/hand/idle1.png" id="1_dvh4g"]
+[ext_resource type="Script" uid="uid://dmn3tvmgbvdmd" path="res://scripts/entity/enemy/Hand.cs" id="1_ebym8"]
+[ext_resource type="Texture2D" uid="uid://uirfbrte2ykf" path="res://assets/hand/idle2.png" id="2_ebym8"]
+[ext_resource type="Texture2D" uid="uid://cyxhjsyatn7io" path="res://assets/hand/idle3.png" id="3_h6fy4"]
+[ext_resource type="Texture2D" uid="uid://bpt8aqtyditag" path="res://assets/hand/idle4.png" id="4_aanjh"]
+[ext_resource type="Texture2D" uid="uid://dm4chvoirapb5" path="res://assets/hand/attack1.png" id="5_ha7xd"]
+[ext_resource type="Texture2D" uid="uid://bswbshctxdoi" path="res://assets/hand/attack2.png" id="6_bt3ka"]
+[ext_resource type="Texture2D" uid="uid://vlnris2ju0mh" path="res://assets/hand/attack3.png" id="7_ly8uc"]
+[ext_resource type="Texture2D" uid="uid://btq6qtfxvs7m6" path="res://assets/hand/attack4.png" id="8_kslql"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_itple"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_ha7xd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_bt3ka")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_ly8uc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_kslql")
+}],
+"loop": false,
+"name": &"attack",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_dvh4g")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_ebym8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_h6fy4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_aanjh")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_dvh4g"]
+radius = 13.0
+height = 62.0
+
+[node name="Hand" type="Area2D"]
+script = ExtResource("1_ebym8")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 3
+rotation = 1.5708
+sprite_frames = SubResource("SpriteFrames_itple")
+animation = &"idle"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-2, -1)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_dvh4g")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 3.0

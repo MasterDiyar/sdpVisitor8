@@ -9,15 +9,12 @@ public partial class KnockBackWeaponDecorator: Weapon
 {
     public Entity Player;
     public Timer timer;
-    public Weapon _weapon;
     
-    
-
     public override void _Ready()
     {
         isDecorator = true;
         _weapon = GetParent<Weapon>();
-        timer = _weapon.GetTimer();
+        timer = (_weapon.GetTimer() is null) ? _weapon.GetNode<Timer>("Timer") : _weapon.GetTimer();
         timer.Start();
         timer.Timeout += () => { timer.Stop(); };
         Player = _weapon.GetEntity();

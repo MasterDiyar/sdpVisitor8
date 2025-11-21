@@ -36,15 +36,5 @@ public partial class Bullet : Area2D, IBullet
     {
         QueueFree();
     }
-
-    bool podpis = false;
-    public void OtPiska()
-    {
-        if (!podpis)
-            try {
-                BodyEntered -= OnBodyHit; }
-            catch (Exception e){ GD.Print(e.Message); }
-
-        podpis = true;
-    }
+    
 }

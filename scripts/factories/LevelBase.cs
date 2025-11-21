@@ -33,7 +33,7 @@ public partial class LevelBase : Node2D
 
         Player.Material = mA.playerColor;
 
-        if (mA.savedWeapon.GetParent() != null) 
+        if (mA?.savedWeapon?.GetParent() != null) 
             mA.savedWeapon?.Reparent(Player);
         else
             Player.AddChild(mA.savedWeapon);

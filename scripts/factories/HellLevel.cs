@@ -21,6 +21,7 @@ public partial class HellLevel : LevelBase
 	protected override void OnLevelLoaded()
 	{
 		Player.GetNode<Movement>("Movement").JumpForce = -440;
+		Player.MoveToggle();
 		textOption = GetNode<TextOption>("TextOption");
 		textOption.NextText += Newator;
 	}
